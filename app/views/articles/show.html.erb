@@ -1,3 +1,7 @@
 <h1>記事詳細画面</h1>
+<p><%= notice %></p>
 <p>タイトル: <%= @article.title %></p>
 <p>内容: <%= @article.content %></p>
+<p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
+<p><%= link_to "記事を削除する", article_path(@article.id), method: :delete,data: { confirm: '本当に削除していいですか？' }  %></p>
+<p><%= link_to "Top page", articles_path %></p>

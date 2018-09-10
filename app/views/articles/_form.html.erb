@@ -1,0 +1,23 @@
+<%= form_with(model: @article , local: true, url: choose_new_or_edit ) do |form| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="article_title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="article_content">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  <%= form.submit %>
+<% end %>
+
+<%= link_to 'Top page', articles_path %>
