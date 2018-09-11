@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  get '/', to: 'articles#index'
+  devise_for :users
+  root 'articles#index'
+  # get '/', to: 'articles#index'
   resources :articles do
     collection do
       post :confirm
     end
+  end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 end
