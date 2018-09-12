@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :confirmable, :timeoutable
 
   has_many :articles, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 end
