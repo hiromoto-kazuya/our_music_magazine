@@ -5,11 +5,12 @@
   <table>
     <tr>
       <th>お名前</th>
-      <td><%= current_user.name %></td>
+      <td><%= @user.name %></td>
     </tr>
     <tr>
       <th>メールアドレス</th>
-      <td><%= current_user.email %></td>
+      <td><%= @user.email %></td>
     </tr>
   </table>
 </section>
+<%= link_to 'お気に入り一覧', favorites_path(id: @user.id) %>
