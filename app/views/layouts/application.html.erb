@@ -11,6 +11,8 @@
 
   <body>
     <% if user_signed_in? %>
+      <div>あなたの名前:<%= current_user.name %></div>
+      <div>あなたのemail:<%= current_user.email %></div>
       <%= link_to "投稿", articles_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
