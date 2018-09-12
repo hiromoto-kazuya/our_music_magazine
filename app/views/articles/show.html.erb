@@ -2,14 +2,13 @@
 <p>タイトル: <%= @article.title %></p>
 <p>内容: <%= @article.content %></p>
 
-<% if user_signed_in? %>
+<% if @user == current_user %>
   <% if @favorite.present? %>
     <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
   <% else %>
     <%= link_to 'お気に入りする', favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary' %>
   <% end %>
+  <p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
+  <p><%= link_to "記事を削除する", article_path(@article.id), method: :delete,data: { confirm: '本当に削除していいですか？' }  %></p>
 <% end %>
-
-<p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
-<p><%= link_to "記事を削除する", article_path(@article.id), method: :delete,data: { confirm: '本当に削除していいですか？' }  %></p>
 <p><%= link_to "Top page", articles_path %></p>

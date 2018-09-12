@@ -12,7 +12,8 @@
   <body>
     <% if user_signed_in? %>
       <%= link_to "Top", articles_path %>
-      <%= link_to "プロフィール", user_path(current_user.id) %>
+      <%= link_to "#{current_user.name}のプロフィール", user_path(current_user.id) %>
+      <%= link_to "ユーザー一覧", users_path %>
       <%= link_to '記事を投稿する', new_article_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
