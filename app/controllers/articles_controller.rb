@@ -31,7 +31,9 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @favorite = current_user.favorites.find_by(article_id: @article.id)
+    if user_signed_in?
+      @favorite = current_user.favorites.find_by(article_id: @article.id)
+    end
   end
 
   def edit
