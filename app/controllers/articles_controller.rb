@@ -16,11 +16,13 @@ class ArticlesController < ApplicationController
 
   def confirm
     @article = Article.new(article_params)
+    @article.user_id = current_user.id
     render :new if @article.invalid?
   end
 
   def create
     @article = Article.create(article_params)
+    @article.user_id = current_user.id
     if @article.save
       redirect_to articles_path, notice: "記事を投稿しました"
     else
