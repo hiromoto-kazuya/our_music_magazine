@@ -14,3 +14,15 @@
   </table>
 </section>
 <%= link_to 'お気に入り一覧', favorites_path(id: @user.id) %>
+
+<% if @user == current_user %>
+  <%= link_to 'アカウント編集', edit_user_registration_path %>
+<% end %>
+
+<h3><%= "#{@user.name}の投稿一覧" %></h3>
+<% (@user.articles).each do |article| %>
+  <p>
+    <%= article.title %>
+    <%= article.content %>
+  </p>
+<% end %>
