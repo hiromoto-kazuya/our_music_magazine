@@ -6,13 +6,14 @@
   <%= render partial: "favorites/favorite", locals: {article: @article} %>
 </div>
 
-<% if user_signed_in? %>
-  <div id="comments_area">
-    <p>コメント一覧：</p>
-    <%= render partial: 'comments/index', locals: { comments: @comments,  article: @article } %>
-  </div>
-  <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
+<p>コメント一覧：</p>
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments,  article: @article } %>
+</div>
 
+<% if user_signed_in? %>
+  <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
+  
   <% if @article.user == current_user %>
     <p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
     <p><%= link_to "記事を削除する", article_path(@article.id), method: :delete,data: { confirm: '本当に削除していいですか？' }  %></p>
