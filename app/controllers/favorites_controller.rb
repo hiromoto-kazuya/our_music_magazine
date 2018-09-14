@@ -8,11 +8,15 @@ class FavoritesController < ApplicationController
 
   def create
     favorite = current_user.favorites.create(article_id: params[:article_id])
-    redirect_to articles_path
+    respond_to do |format|
+      format.js { render :template => "favorites/favorite",locals: { favorite: favorite, article: favorite.article } }
+    end
   end
 
   def destroy
     favorite = current_user.favorites.find_by(id: params[:id]).destroy
-    redirect_to articles_path
+    respond_to do |format|
+      format.js { render :template => "favorites/favorite",locals: { favorite: favorite, article: favorite.article } }
+    end
   end
 end
