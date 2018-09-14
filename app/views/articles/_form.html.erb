@@ -9,6 +9,12 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :catch_image %>
+    <%= image_tag("#{@article.catch_image.url}") if @article.catch_image.url %>
+    <%= form.file_field :catch_image, id: :article_image %>
+  </div>
+
   <div class="article_title">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -17,7 +23,9 @@
     <%= form.label :content %>
     <%= form.text_area :content %>
   </div>
-  <%= form.submit %>
+  <div class = "actions">
+    <%= form.submit %>
+  </div>
 <% end %>
 
 <%= link_to 'Top page', articles_path %>

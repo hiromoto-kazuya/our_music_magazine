@@ -9,6 +9,9 @@ class ArticlesController < ApplicationController
   def new
     if params[:back]
       @article = Article.new(article_params)
+      @article.catch_image.retrieve_from_cache! params[:article][:catch_image_cache]
+      raise
+      # @article.catch_image.retrieve_from_cache! params[:article][:catch_image_cache]
     else
       @article = Article.new
     end
@@ -21,7 +24,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.create(article_params)
+    @article = Article.new(article_params)
     @article.user_id = current_user.id
     if @article.save
       redirect_to articles_path, notice: "記事を投稿しました"
@@ -54,7 +57,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title,:content,:genre_id)
+    params.require(:article).permit(:title, :content, :genre_id, :catch_image, :catch_image_cache)
   end
 
   def set_article
