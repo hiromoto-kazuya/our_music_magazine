@@ -2,13 +2,21 @@
 <p>タイトル: <%= @article.title %></p>
 <p>内容: <%= @article.content %></p>
 
-<% if @user == current_user %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(article_id: @article.id), method: :post, class: 'btn btn-primary' %>
+<div id="favorite_btn_<%= @article.id %>">
+  <%= render partial: "favorites/favorite", locals: {article: @article} %>
+</div>
+
+<% if user_signed_in? %>
+  <div id="comments_area">
+    <p>コメント一覧：</p>
+    <%= render partial: 'comments/index', locals: { comments: @comments,  article: @article } %>
+  </div>
+  <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
+
+  <% if @article.user == current_user %>
+    <p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
+    <p><%= link_to "記事を削除する", article_path(@article.id), method: :delete,data: { confirm: '本当に削除していいですか？' }  %></p>
   <% end %>
-  <p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
-  <p><%= link_to "記事を削除する", article_path(@article.id), method: :delete,data: { confirm: '本当に削除していいですか？' }  %></p>
 <% end %>
+
 <p><%= link_to "Top page", articles_path %></p>

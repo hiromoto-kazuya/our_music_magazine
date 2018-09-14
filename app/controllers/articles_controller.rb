@@ -34,6 +34,8 @@ class ArticlesController < ApplicationController
     if user_signed_in?
       @favorite = current_user.favorites.find_by(article_id: @article.id)
     end
+    @comments = @article.comments
+    @comment = @article.comments.build
   end
 
   def edit

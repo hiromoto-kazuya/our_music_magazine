@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root 'articles#index'
+  
   devise_for :users
   resources :users, :only => [:index,:show]
+
   resources :articles do
+    resources :comments
     collection do
       post :confirm
     end
