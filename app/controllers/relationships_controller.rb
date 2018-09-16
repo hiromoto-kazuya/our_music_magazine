@@ -1,6 +1,15 @@
 class RelationshipsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @user = User.find(params[:id])
+    if params[:name] == "follow_index"
+      @follow_relations = @user.following
+    elsif params[:name] == "follower_index"
+      @follow_relations = @user.followers
+    end
+  end
+
   def create
     if user_signed_in?
       @user = User.find(params[:relationship][:followed_id])

@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
   root 'articles#index'
 
   devise_for :users
@@ -14,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:index, :create, :destroy]
-  resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:index, :create, :destroy]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
