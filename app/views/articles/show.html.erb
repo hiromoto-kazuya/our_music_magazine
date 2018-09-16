@@ -1,4 +1,5 @@
 <h1>記事詳細画面</h1>
+<p><%= image_tag("#{@article.catch_image}") %></p>
 <p>タイトル: <%= @article.title %></p>
 <p>内容: <%= @article.content %></p>
 
@@ -13,7 +14,7 @@
 
 <% if user_signed_in? %>
   <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
-  
+
   <% if @article.user == current_user %>
     <p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
     <p><%= link_to "記事を削除する", article_path(@article.id), method: :delete,data: { confirm: '本当に削除していいですか？' }  %></p>
