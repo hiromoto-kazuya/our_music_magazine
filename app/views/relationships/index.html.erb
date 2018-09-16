@@ -1,0 +1,10 @@
+<h1>フォロー一覧</h1>
+<% unless @follow_relations.count == 0 %>
+  <% @follow_relations.each do |follow_relation| %>
+    <%= link_to follow_relation.name, user_path(follow_relation.id) %>
+  <% end %>
+<% else %>
+  <p>
+    まだフォローがありません
+  </p>
+<% end %>

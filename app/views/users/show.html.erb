@@ -12,8 +12,10 @@
       <td><%= @user.introduce_message %></td>
     </tr>
     <tr>
-      <th>メールアドレス</th>
-      <td><%= @user.email %></td>
+      <td>
+        フォロー<%= link_to "#{@user.following.count}", relationships_path(id: @user.id, name: 'follow_index')  %>
+        フォロワー<%= link_to "#{@user.followers.count}", relationships_path(id: @user.id, name: 'follower_index') %>
+      </td>
     </tr>
   </table>
 </section>
