@@ -9,7 +9,6 @@ class ArticlesController < ApplicationController
   def new
     if params[:back]
       @article = Article.new(article_params)
-      @article.catch_image.retrieve_from_cache! params[:article][:catch_image_cache] if @article.catch_image_cache
     else
       @article = Article.new
     end
