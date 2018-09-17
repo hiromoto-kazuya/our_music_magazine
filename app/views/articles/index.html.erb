@@ -3,6 +3,7 @@
   <tr>
     <th>投稿者</th>
     <th>タイトル</th>
+    <th>ハッシュタグ</th>
     <th>内容</th>
   </tr>
 
@@ -10,6 +11,7 @@
   <tr>
     <td><%= article.user.name %></td>
     <td><%= article.title %></td>
+    <td><%= article.hashtag %></td>
     <td><%= article.content %></td>
     <td><%= link_to '詳細を確認する', article_path(article.id) %></td>
     <td>

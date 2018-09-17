@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :content, :genre_id, :catch_image, :catch_image_cache)
+    params.require(:article).permit(:title,:hashtag, :content, :genre_id, :catch_image, :catch_image_cache)
   end
 
   def set_article
