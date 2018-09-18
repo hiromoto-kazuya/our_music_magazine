@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :confirm, :create, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order(created_at: :desc)
   end
 
   def new
@@ -52,6 +52,12 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     redirect_to articles_path, notice: "記事を削除しました"
+  end
+
+  def hashtag
+    @user = current_user
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @articles = @tag.articles
   end
 
   private
