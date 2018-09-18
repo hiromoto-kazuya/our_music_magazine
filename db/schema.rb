@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_14_124245) do
+ActiveRecord::Schema.define(version: 2018_09_18_062251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_hashtags", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_article_hashtags_on_article_id"
+    t.index ["hashtag_id"], name: "index_article_hashtags_on_hashtag_id"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string "title", limit: 500, default: "", null: false
@@ -23,6 +32,7 @@ ActiveRecord::Schema.define(version: 2018_09_14_124245) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.text "catch_image"
+    t.string "hashtag", limit: 100
     t.index ["content"], name: "index_articles_on_content"
     t.index ["genre_id"], name: "index_articles_on_genre_id"
     t.index ["title"], name: "index_articles_on_title"
@@ -42,6 +52,13 @@ ActiveRecord::Schema.define(version: 2018_09_14_124245) do
     t.integer "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
   create_table "relationships", force: :cascade do |t|

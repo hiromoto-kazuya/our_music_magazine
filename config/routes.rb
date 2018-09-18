@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'articles#index'
+  get '/article/hashtag/:name', to: "articles#hashtag"
 
   devise_for :users
   resources :users, :only => [:index,:show]
-
   resources :articles do
     resources :comments
     collection do

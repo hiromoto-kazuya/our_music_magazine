@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :confirm, :create, :edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order(created_at: :desc)
   end
 
   def new
@@ -54,9 +54,15 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, notice: "記事を削除しました"
   end
 
+  def hashtag
+    @user = current_user
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @articles = @tag.articles
+  end
+
   private
   def article_params
-    params.require(:article).permit(:title, :content, :genre_id, :catch_image, :catch_image_cache)
+    params.require(:article).permit(:title,:hashtag, :content, :genre_id, :catch_image, :catch_image_cache)
   end
 
   def set_article
