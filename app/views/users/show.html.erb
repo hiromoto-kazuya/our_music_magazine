@@ -4,6 +4,10 @@
   </div>
   <table>
     <tr>
+      <th>アイコン</th>
+      <td><%= image_tag("#{@user.icon_image}", :size => "60x60") %></td>
+    </tr>
+    <tr>
       <th>お名前</th>
       <td><%= @user.name %></td>
     </tr>
