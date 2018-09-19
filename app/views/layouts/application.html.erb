@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <% unless @searched_article == nil %>
+      <%= search_form_for @searched_article do |f| %>
+        検索: <%= f.text_field :title_or_content_or_hashtag_cont %>
+        <div>
+          <%= f.submit '検索する' %>
+        </div>
+      <% end %>
+    <% end %>
+
+
     <% if user_signed_in? %>
       <%= link_to "Top", articles_path %>
       <%= link_to "#{current_user.name}のプロフィール", user_path(current_user.id) %>
