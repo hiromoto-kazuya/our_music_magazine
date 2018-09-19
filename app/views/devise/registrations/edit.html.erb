@@ -8,6 +8,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :icon_image %>
+    <%= f.file_field :icon_image, id: :user_image %>
+  </div>
+
+  <div class="field">
     <%= f.label :introduce_message %><br />
     <%= f.text_area :introduce_message, autocomplete: "introduce_message" %>
   </div>
