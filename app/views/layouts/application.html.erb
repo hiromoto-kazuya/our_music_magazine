@@ -10,15 +10,14 @@
   </head>
 
   <body>
-    <% unless @searched_article == nil %>
-      <%= search_form_for @searched_article do |f| %>
+    <% unless @search_with_article == nil %>
+      <%= search_form_for @search_with_article do |f| %>
         検索: <%= f.text_field :title_or_content_or_hashtag_cont %>
         <div>
           <%= f.submit '検索する' %>
         </div>
       <% end %>
     <% end %>
-
 
     <% if user_signed_in? %>
       <%= link_to "Top", articles_path %>

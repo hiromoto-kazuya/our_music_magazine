@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only:[:show,:edit,:update,:destroy,]
   before_action :authenticate_user!, only: [:new, :confirm, :create, :edit, :update, :destroy]
-  before_action :set_searched_params, only: [:index, :new, :confirm, :edit, :show, :hashtag]
+  before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
   def index
   end
@@ -67,10 +67,5 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.find(params[:id])
-  end
-
-  def set_searched_params
-    @searched_article = Article.search(params[:q])
-    @articles = @searched_article.result
   end
 end
