@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'articles#index'
   get '/article/hashtag/:name', to: "articles#hashtag"
-
+  get '/search_results', to: "search_results#index"
+  
   devise_for :users
   resources :users, :only => [:index,:show]
   resources :articles do

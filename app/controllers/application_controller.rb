@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_params_for_searching_articles_and_users
-    @search_with_article = Article.search(params[:q])
-    @articles = @search_with_article.result
+    @q = Article.search(params[:q])
+    @articles = @q.result
     unless params[:q] == nil
       $searching_word = params[:q][:title_or_content_or_hashtag_cont]
       @users = User.search_with_user
