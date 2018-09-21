@@ -4,21 +4,11 @@
     <title>OurMusicMagazine</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% unless @search_with_article == nil %>
-      <%= search_form_for @search_with_article do |f| %>
-        検索: <%= f.text_field :title_or_content_or_hashtag_cont %>
-        <div>
-          <%= f.submit '検索する' %>
-        </div>
-      <% end %>
-    <% end %>
-
     <% if user_signed_in? %>
       <%= link_to "Top", articles_path %>
       <%= link_to "#{current_user.name}のプロフィール", user_path(current_user.id) %>
@@ -30,11 +20,15 @@
       <%= link_to "ログイン", new_user_session_path %>
     <% end %>
 
+    <% unless @q == nil %>
+      <%= search_form_for @q, url: search_results_path, html: { method: :get } do |f| %>
+        検索: <%= f.text_field :title_or_content_or_hashtag_cont %>
+        <div><%= f.submit '検索する' %></div>
+      <% end %>
+    <% end %>
+
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
     <% end %>
 
     <%= yield %>

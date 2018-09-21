@@ -1,8 +1,10 @@
-<h1>Top page</h1>
+<h1>Search Results</h1>
 <br/>
 <table>
+
   <% @articles.each do |article| %>
-      <tr>
+    <% if article.is_a?(Article) %>
+      <tr class = "serached_articles">
         <td><%= article.user.name %></td>
         <td><%= article.title %></td>
         <td><%= render_with_hashtags(article.hashtag) %></td>
@@ -14,5 +16,11 @@
           </div>
         </td>
       </tr>
+    <% else %>
+    <tr class = "serached_users">
+      <td><%= article.name %></td>
+      <td><%= article.introduce_message %></td>
+    </tr>
+    <% end %>
   <% end %>
 </table>
