@@ -1,4 +1,6 @@
 <h1>記事詳細画面</h1>
+<p><%= image_tag("#{@article.user.icon_image}", :size => "60x60") %></p>
+<p>ユーザー名: <%= @article.user.name %></p>
 <p><%= image_tag("#{@article.catch_image}") %></p>
 <p>タイトル: <%= @article.title %></p>
 <p>ハッシュタグ:<%= render_with_hashtags(@article.hashtag) %></p>

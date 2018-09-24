@@ -8,13 +8,20 @@
       <td><%= image_tag("#{@user.icon_image}", :size => "60x60") %></td>
     </tr>
     <tr>
-      <th>お名前</th>
+      <th>名前</th>
       <td><%= @user.name %></td>
     </tr>
     <tr>
       <th>自己紹介文</th>
       <td><%= @user.introduce_message %></td>
     </tr>
+    <% if @user != current_user %>
+      <tr>
+        <td>
+          <%= render 'follow_form', user: @user %>
+        </td>
+      </tr>
+    <% end %>
     <tr>
       <td>
         フォロー<%= link_to "#{@user.following.count}", relationships_path(id: @user.id, name: 'follow_index')  %>

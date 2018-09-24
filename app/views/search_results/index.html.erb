@@ -17,9 +17,13 @@
         </td>
       </tr>
     <% else %>
+    <% user_for_searching = article %>
     <tr class = "serached_users">
-      <td><%= article.name %></td>
-      <td><%= article.introduce_message %></td>
+      <td><%= user_for_searching.name %></td>
+      <td><%= user_for_searching.introduce_message %></td>
+      <% if user_for_searching != current_user %>
+        <td><%= render 'users/follow_form', user: user_for_searching %></td>
+      <% end %>
     </tr>
     <% end %>
   <% end %>
