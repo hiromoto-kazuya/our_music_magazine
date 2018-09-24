@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
   def index
+
   end
 
   def new
@@ -31,6 +32,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    impressionist(@article, nil, unique: [:session_hash])
     if user_signed_in?
       @favorite = current_user.favorites.find_by(article_id: @article.id)
     end
