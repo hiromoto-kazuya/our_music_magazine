@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
   def index
+
   end
 
   def new

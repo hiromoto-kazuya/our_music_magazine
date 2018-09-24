@@ -7,7 +7,6 @@
 <p>内容: <%= @article.content %></p>
 <p><%=  @article.impressionist_count %>PV</p>
 
-
 <div id="favorite_btn_<%= @article.id %>">
   <%= render partial: "favorites/favorite", locals: {article: @article} %>
 </div>
