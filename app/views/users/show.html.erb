@@ -34,6 +34,7 @@
 
 <% if @user == current_user %>
   <%= link_to 'アカウント編集', edit_user_registration_path %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 <% end %>
 
 <h3><%= "#{@user.name}の投稿一覧" %></h3>
