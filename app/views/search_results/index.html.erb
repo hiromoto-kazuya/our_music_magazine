@@ -20,7 +20,7 @@
     <% else %>
     <% user_for_searching = article %>
     <tr class = "serached_users">
-      <td><%= user_for_searching.name %></td>
+      <td><%= link_to user_for_searching.name, user_path(id: user_for_searching.id ) %></td>
       <td><%= user_for_searching.introduce_message %></td>
       <% if user_for_searching != current_user %>
         <td><%= render 'users/follow_form', user: user_for_searching %></td>
