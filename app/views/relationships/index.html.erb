@@ -1,4 +1,8 @@
-<h1>フォロー一覧</h1>
+<% if params[:name] == "follow_index" %>
+  <h1>フォロー</h1>
+<% elsif params[:name] == "follower_index" %>
+  <h1>フォロワー</h1>
+<% end %>
 <% unless @follow_relations.count == 0 %>
   <% @follow_relations.each do |follow_relation| %>
     <%= link_to follow_relation.name, user_path(follow_relation.id) %>
