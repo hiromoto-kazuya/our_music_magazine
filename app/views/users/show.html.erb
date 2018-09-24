@@ -24,8 +24,7 @@
     <% end %>
     <tr>
       <td>
-        フォロー<%= link_to "#{@user.following.count}", relationships_path(id: @user.id, name: 'follow_index')  %>
-        フォロワー<%= link_to "#{@user.followers.count}", relationships_path(id: @user.id, name: 'follower_index') %>
+        <%= render 'follow_count', user: @user %>
       </td>
     </tr>
   </table>
