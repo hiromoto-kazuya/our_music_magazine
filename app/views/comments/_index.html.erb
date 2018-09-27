@@ -2,8 +2,11 @@
   <% comments.each do |comment| %>
     <% if comment.id.present? %>
         <p>
-          <%= comment.user.name %>
+          <%= link_to comment.user.name, user_path(comment.user.id) %>
           <%= comment.content %>
+          <% if comment.user == current_user %>
+            <%= link_to '削除', article_comment_path(comment.article_id,comment.id), method: :delete, remote: true %>
+          <% end %>
         </p>
     <% end %>
   <% end %>

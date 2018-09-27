@@ -13,11 +13,11 @@
 
 <p>コメント一覧：</p>
 <div id="comments_area">
-  <%= render partial: 'comments/index', locals: { comments: @comments,  article: @article, user: current_user } %>
+  <%= render partial: 'comments/index', locals: { comments: @comments } %>
 </div>
 
 <% if user_signed_in? %>
-  <%= render partial: 'comments/form', locals: { comment: @comment, article: @article, user: current_user } %>
+  <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
 
   <% if @article.user == current_user %>
     <p><%= link_to "記事を編集する", edit_article_path(@article.id) %></p>
