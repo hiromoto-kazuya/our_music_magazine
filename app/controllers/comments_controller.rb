@@ -3,12 +3,15 @@ class CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
     @comment.user_id = current_user.id
-    respond_to do |format|
-      if @comment.save
-        format.js { render :index }
-      else
-        format.html { redirect_to article_path(@article), notice: '投稿に失敗しました' }
-      end
+    if @comment.save
+      render :index
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      render :index
     end
   end
 
