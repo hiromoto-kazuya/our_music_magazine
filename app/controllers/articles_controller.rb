@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only:[:show,:edit,:update,:destroy,]
+  before_action :set_article, only:[:edit,:update,:destroy,]
   before_action :authenticate_user!, only: [:new, :confirm, :create, :edit, :update, :destroy]
   before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
     impressionist(@article, nil, unique: [:session_hash])
     if user_signed_in?
       @favorite = current_user.favorites.find_by(article_id: @article.id)
@@ -68,6 +69,6 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = current_user.articles.find(params[:id])
   end
 end
