@@ -1,0 +1,15 @@
+current directory: /Users/kazuya/workspace/our_music_magazine/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+/Users/kazuya/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20180930-89390-6bd693.rb extconf.rb
+creating Makefile
+
+current directory: /Users/kazuya/workspace/our_music_magazine/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /Users/kazuya/workspace/our_music_magazine/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.bundle
+
+current directory: /Users/kazuya/workspace/our_music_magazine/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.bundle ./.gem.20180930-89390-17aee11
