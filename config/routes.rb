@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   root 'articles#index'
   get '/article/hashtag/:name', to: "articles#hashtag"
   get '/search_results', to: "search_results#index"

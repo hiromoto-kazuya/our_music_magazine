@@ -9,7 +9,7 @@
   <p><%= image_tag("#{@article.catch_image}") %></p>
   <p>タイトル:<%= @article.title %></p>
   <p>ハッシュタグ:<%= @article.hashtag %></p>
-  <p>本文:<%= @article.content %></p>
+  <p>本文:<%== @article.content %></p>
   <%= f.submit  '投稿する' %>
 <% end %>
 
