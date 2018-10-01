@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
   before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
   def index
-    @articles = Article.all.order(created_at: :desc)
+    @new_articles = Article.all.order(created_at: :desc).limit(3)
+    @favorited_articles = Article.find(Favorite.group(:article_id).order("count_all asc").count.keys[0..5]).reverse
   end
 
   def new
