@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     @new_articles = Article.all.order(created_at: :desc).limit(3)
-    @favorited_articles = Article.find(Favorite.group(:article_id).order("count_all asc").count.keys[0..5]).reverse
+    @favorited_articles = Article.find(Favorite.group(:article_id).order("count_all desc").count.keys[0..5])
   end
 
   def new

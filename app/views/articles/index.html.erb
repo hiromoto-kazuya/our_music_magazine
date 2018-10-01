@@ -1,5 +1,8 @@
 <h1>Top page</h1>
 <br/>
+============================
+新着記事
+============================
 <table class = "new-article">
   <% @new_articles.each do |article| %>
     <tr>
@@ -18,6 +21,8 @@
     </tr>
   <% end %>
 </table>
+============================
+人気の記事
 ============================
 <table class = "favorited-article">
   <% @favorited_articles.each do |article| %>
