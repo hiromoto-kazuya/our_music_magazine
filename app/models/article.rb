@@ -9,7 +9,7 @@ class Article < ApplicationRecord
   has_many :article_hashtags, dependent: :destroy
   has_many :hashtags, through: :article_hashtags
   mount_uploader :catch_image, ImageUploader
-  is_impressionable
+  is_impressionable counter_cache: true
 
   after_create do
     article = Article.find_by(id: self.id)

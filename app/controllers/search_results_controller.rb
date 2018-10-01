@@ -13,7 +13,7 @@ class SearchResultsController < ApplicationController
   end
 
   def many_pvs_articles
-    @articles = Article.all.order(impressionist_count: :desc)
+    @articles = Article.all.order(impressions_count: :desc).limit(10)
   end
 
   def following_articles
