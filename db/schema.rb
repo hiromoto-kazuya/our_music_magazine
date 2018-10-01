@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_30_101810) do
+ActiveRecord::Schema.define(version: 2018_10_01_062535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_09_30_101810) do
     t.bigint "user_id"
     t.text "catch_image"
     t.string "hashtag", limit: 100
+    t.integer "impressions_count", default: 0
     t.index ["content"], name: "index_articles_on_content"
     t.index ["genre_id"], name: "index_articles_on_genre_id"
     t.index ["title"], name: "index_articles_on_title"

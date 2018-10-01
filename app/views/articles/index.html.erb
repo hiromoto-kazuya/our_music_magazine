@@ -9,7 +9,7 @@
       <td><%= link_to article.user.name, user_path(article.user.id) %></td>
       <td><%= article.title %></td>
       <td><%= render_with_hashtags(article.hashtag) %></td>
-      <td><%== article.content %></td>
+      <td><%== article.content.truncate(10) %></td>
       <td><%= article.impressionist_count %>PV</td>
       <td><%= article.favorites.count %>いいね</td>
       <td><%= link_to '詳細を確認する', article_path(article.id) %></td>
@@ -25,12 +25,12 @@
 人気の記事
 ============================
 <table class = "favorited-article">
-  <% @favorited_articles.each do |article| %>
+  <% @favorite_articles.each do |article| %>
     <tr>
       <td><%= link_to article.user.name, user_path(article.user.id) %></td>
       <td><%= article.title %></td>
       <td><%= render_with_hashtags(article.hashtag) %></td>
-      <td><%== article.content %></td>
+      <td><%== article.content.truncate(10) %></td>
       <td><%= article.impressionist_count %>PV</td>
       <td><%= article.favorites.count %>いいね</td>
       <td><%= link_to '詳細を確認する', article_path(article.id) %></td>
