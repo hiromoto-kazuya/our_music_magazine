@@ -10,7 +10,7 @@
   <tr>
     <td><%= favorite.article.user.name %></td>
     <td><%= favorite.article.title %></td>
-    <td><%= favorite.article.content %></td>
+    <td><%== favorite.article.content %></td>
     <td><%= link_to '詳細を確認する', article_path(favorite.article.id) %></td>
     <td>
       <% if favorite.user == current_user %>

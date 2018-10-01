@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root 'articles#index'
   get '/article/hashtag/:name', to: "articles#hashtag"
   get '/search_results', to: "search_results#index"
+  get '/new_articles', to: "search_results#new_articles"
+  get '/favorite_articles', to: "search_results#favorite_articles"
+  get '/many_pvs_articles', to: "search_results#many_pvs_articles"
+  get '/following_articles', to: "search_results#following_articles"
 
   devise_for :users
   resources :users, :only => [:show]

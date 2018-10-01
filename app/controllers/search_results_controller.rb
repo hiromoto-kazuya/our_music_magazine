@@ -3,4 +3,19 @@ class SearchResultsController < ApplicationController
   impressionist :actions=> [:index]
   def index
   end
+
+  def new_articles
+    @articles = Article.all.order(created_at: :desc)
+  end
+
+  def favorite_articles
+    @articles = Article.find(Favorite.group(:article_id).order("count_all desc").count.keys[0..9])
+  end
+
+  def many_pvs_articles
+    @articles = Article.all.order(impressionist_count: :desc)
+  end
+
+  def following_articles
+  end
 end
