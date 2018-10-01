@@ -17,5 +17,6 @@ class SearchResultsController < ApplicationController
   end
 
   def following_articles
+    @articles = Article.where(user_id: current_user.following)
   end
 end

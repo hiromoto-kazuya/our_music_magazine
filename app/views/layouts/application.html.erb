@@ -11,6 +11,10 @@
   <body>
     <% if user_signed_in? %>
       <%= link_to "Top", articles_path %>
+      <%= link_to '新着記事', new_articles_path %>
+      <%= link_to '人気記事', favorite_articles_path %>
+      <%= link_to 'PV数 TOP10', many_pvs_articles_path %>
+      <%= link_to 'フォロー中', following_articles_path %>
       <%= link_to "#{current_user.name}のプロフィール", user_path(current_user.id) %>
       <%= link_to '記事を投稿する', new_article_path %>
     <% else %>
