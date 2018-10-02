@@ -9,25 +9,33 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "Top", articles_path %>
-      <%= link_to '新着記事', new_articles_path %>
-      <%= link_to '人気記事', favorite_articles_path %>
-      <%= link_to 'PV数 TOP10', many_pvs_articles_path %>
-      <%= link_to 'フォロー中', following_articles_path %>
-      <%= link_to "#{current_user.name}のプロフィール", user_path(current_user.id) %>
-      <%= link_to '記事を投稿する', new_article_path %>
-    <% else %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+    <header>
+      <div class = "logo">
+        <%= link_to(articles_path) do %>
+          <%= image_tag 'omm_logo.png',:size => "320x50" %>
+        <% end %>
+      </div>
+      <div class = "header-menu">
+        <% if user_signed_in? %>
+          <%= link_to '新着記事', new_articles_path %>
+          <%= link_to '人気記事', favorite_articles_path %>
+          <%= link_to 'PV数 TOP10', many_pvs_articles_path %>
+          <%= link_to 'フォロー中', following_articles_path %>
+          <%= link_to "#{current_user.name}のプロフィール", user_path(current_user.id) %>
+          <%= link_to '記事を投稿する', new_article_path %>
+        <% else %>
+          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "ログイン", new_user_session_path %>
+        <% end %>
+        <% unless @q == nil %>
+          <%= search_form_for @q, url: search_results_path, html: { method: :get } do |f| %>
+            <%= f.text_field :title_or_content_or_hashtag_cont, class: "form-control search-form",placeholder: "検索" %>
+            <div><%= f.submit '検索する' ,class: "search-form-btn"%></div>
+          <% end %>
+        <% end %>
+      </div>
 
-    <% unless @q == nil %>
-      <%= search_form_for @q, url: search_results_path, html: { method: :get } do |f| %>
-        検索: <%= f.text_field :title_or_content_or_hashtag_cont %>
-        <div><%= f.submit '検索する' %></div>
-      <% end %>
-    <% end %>
+    </header>
 
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
