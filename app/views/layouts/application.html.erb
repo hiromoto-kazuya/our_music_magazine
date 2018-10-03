@@ -24,7 +24,7 @@
               <li><%= link_to '新着記事', new_articles_path %></li>
               <li><%= link_to '人気記事', favorite_articles_path %></li>
               <li><%= link_to '注目記事', many_pvs_articles_path %></li>
-              <li><%= link_to 'フォロー中', following_articles_path %></li>
+              <li><%= link_to 'フォロー', following_articles_path %></li>
             </ul>
           </li>
           <% if user_signed_in? %>
@@ -60,10 +60,6 @@
 
       </div>
     </header>
-
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
 
       <%= yield %>
 

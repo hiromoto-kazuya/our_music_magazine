@@ -4,6 +4,10 @@ body {
   position: relative;
 }
 
+li {
+  list-style: none;
+}
+
 a:link {
   color:#000000;
   text-decoration:none;
@@ -33,43 +37,26 @@ header {
 }
 
 .header-wrapper {
-  height: 75px;
+  height: 80px;
   border-bottom: 1px solid rgba(0,0,0,.0975);
 }
 
 header .logo {
+  padding: 15px;
+  position: absolute;
 }
-
-.search-form {
-  width: 230px;
-}
-
-.search-form-btn {
-  display: none;
-}
-
-
-
-
-
-
-
-
-
-
-/*以下コピペ*/
 
 .menu {
-    position: relative;
-    width: 100%;
+    position: absolute;
+    margin: 15px 0px;
+    right: 0;
     height: 50px;
-    max-width: 1000px;
-    margin: 0 auto;
+
 }
 
 .menu > li {
     float: left;
-    width: 25%; /* グローバルナビ4つの場合 */
+    margin-right: 50px;
     height: 50px;
     line-height: 50px;
 }
@@ -96,6 +83,7 @@ ul.menu__second-level {
 
 .menu__second-level li {
     border-top: 1px solid #111;
+    width: 100px;
 }
 
 /* 下矢印 */
@@ -122,10 +110,6 @@ ul.menu__second-level {
     clear: both;
 }
 
-.menu {
-    *zoom: 1;
-}
-
 .menu > li.menu__single {
     position: relative;
 }
@@ -142,4 +126,14 @@ li.menu__single:hover ul.menu__second-level {
     top: 50px;
     visibility: visible;
     opacity: 1;
+}
+
+.search-form {
+  position:absolute;
+  width: 230px;
+  top: 100px;
+}
+
+.search-form-btn {
+  display: none;
 }
