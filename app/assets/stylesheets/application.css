@@ -14,20 +14,3 @@
  *= require_tree .
  *= require_self
  */
-
-
-/*header*/
-header {
-  position: relative;
-}
-header .logo {
-  text-align: center;
-}
-
-.search-form {
-  width: 230px;
-}
-
-.search-form-btn {
-  display: none;
-}
