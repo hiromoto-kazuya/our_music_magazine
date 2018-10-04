@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OurMusicMagazine</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class = "logo">
+        <%= link_to(articles_path) do %>
+          <%= image_tag 'omm_logo(white&thick).png' %>
+        <% end %>
+      </div>
+
+      <% unless @q == nil %>
+        <%= search_form_for @q, url: search_results_path, html: { method: :get } do |f| %>
+          <%= f.text_field :title_or_content_or_hashtag_cont, class: "form-control search-form",placeholder: "アーティスト名や曲名で検索" %>
+          <div><%= f.submit '検索する' ,class: "search-form-btn"%></div>
+        <% end %>
+      <% end %>
+
+      <ul class = "menu">
+        <li class="menu__single">
+          <a href="#" class="init-bottom">記事メニュー</a>
+          <ul class="menu__second-level">
+            <li><%= link_to '新着記事', new_articles_path %></li>
+            <li><%= link_to '人気記事', favorite_articles_path %></li>
+            <li><%= link_to '注目記事', many_pvs_articles_path %></li>
+            <li><%= link_to 'フォロー', following_articles_path %></li>
+          </ul>
+        </li>
+
+        <% if user_signed_in? %>
+          <li class="menu__single">
+            <a href="#" class="init-bottom">アカウント</a>
+            <ul class="menu__second-level">
+              <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+              <li><%= link_to 'ユーザー編集', edit_user_registration_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </li>
+          <li class = "menu__single">
+            <%= link_to '記事を投稿', new_article_path %>
+          </li>
+        <% else %>
+          <li class = "menu__single">
+            <%= link_to "新規登録", new_user_registration_path %>
+          </li>
+          <li class = "menu__single">
+            <%= link_to "ログイン", new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+
+    </header>
+
+      <%= yield %>
+
+    <footer>
+      <p>Copyright 2018 Our Music Magazine All rights reserved.</p>
+    </footer>
+
+  </body>
+</html>
