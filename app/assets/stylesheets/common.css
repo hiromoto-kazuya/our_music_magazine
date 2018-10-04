@@ -180,6 +180,13 @@ li.menu__single:hover ul.menu__second-level {
   }
 }
 
+/*コンテンツ部分*/
+.header-space {
+  height: 100px;
+}
+
+
+
 /*footer*/
 footer {
   height: 200px;
