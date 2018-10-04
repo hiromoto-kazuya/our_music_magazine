@@ -4,6 +4,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  def default_url
+    "default_image.png"
+  end
+
   version :icon_thumb do
      process :resize_to_fill => [50, 50]
   end

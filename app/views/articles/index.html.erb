@@ -6,7 +6,7 @@
     <% @new_articles.each do |article| %>
       <div class = "article col-md-4 col-sm-6 col-xs-6">
         <div class = "catch_image">
-          <%= image_tag("#{article.catch_image}") %>
+          <%= image_tag("#{article.catch_image}", size: "390×260") %>
         </div>
 
         <%= image_tag("#{article.user.icon_image}", size: "60x60") %>
@@ -38,8 +38,11 @@
           <%= image_tag("#{article.catch_image}") %>
         </div>
 
+        <%= image_tag("#{article.user.icon_image}", size: "60x60") %>
         <%= link_to article.user.name, user_path(article.user.id) %>
         <%= article.title %>
+        <%= article.created_at.to_date %>
+        
         <%= render_with_hashtags(article.hashtag) %>
         <%== article.content.truncate(10) %>
         <%= article.impressionist_count %>PV

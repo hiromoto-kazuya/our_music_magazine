@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= form.label :catch_image %>
-    <%= image_tag("#{@article.catch_image.url}") if @article.catch_image.url %>
+    
     <%= form.file_field :catch_image, id: :article_image %>
     <%= form.hidden_field :catch_image_cache %>
   </div>
