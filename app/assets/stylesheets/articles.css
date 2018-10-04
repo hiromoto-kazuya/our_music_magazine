@@ -1,5 +1,31 @@
-.top-space {
+/* #index */
+.top-image-space {
   background-image: url("omm_top.png");
   height: 800px;
   background-size: cover;
+}
+
+.article {
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 20px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.catch_image {
+  width: 100%;
+	overflow: hidden;
+  background: #000;
+}
+
+.catch_image img {
+	display: block;
+	transition-duration: 0.3s;
+}
+
+.catch_image img:hover {
+	transform: scale(1.1);
+	transition-duration: 0.3s;
+  opacity: 0.6;
 }
