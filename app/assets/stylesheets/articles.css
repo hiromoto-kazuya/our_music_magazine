@@ -1,5 +1,108 @@
-.top-space {
+/* #index */
+.top-image-space {
   background-image: url("omm_top.png");
   height: 800px;
   background-size: cover;
+}
+
+.index-contents {
+  position:relative;
+}
+
+.index-contents .row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 992px) {
+  .favorite-articles {
+    top: 1300px;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .favorite-articles {
+    top: 700px;
+  }
+}
+
+.article {
+  height: 700px;
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.catch_image {
+  width: 100%;
+	overflow: hidden;
+  background: #000;
+}
+
+.catch_image img {
+  max-width: 100%;
+	display: block;
+	transition-duration: 0.3s;
+}
+
+.catch_image img:hover {
+	transform: scale(1.1);
+	transition-duration: 0.3s;
+  opacity: 0.6;
+}
+
+.text-information {
+  padding: 20px 35px;
+}
+
+.hashtag a {
+  text-decoration: underline;
+}
+
+.hashtag a:link {
+  color: #337ab7;
+}
+
+.hashtag a:visited {
+  color: #337ab7;
+}
+
+.article-title {
+  font-size: 1.8em;
+  line-height: 1.3;
+  margin-bottom: 17px;
+  text-align: left;
+}
+
+.user-info {
+  margin-bottom: 15px;
+}
+
+.article-numbers-info {
+  margin: 20px 0;
+  right: 40px;
+  position: absolute;
+  bottom: 0px;
+  padding-left: 0px;
+}
+
+.article-numbers-info li {
+  float: left;
+}
+
+.favorite-heart {
+  max-width: 50px;
+  height: auto;
+}
+
+.like-count {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.pv_count {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 30px;
 }

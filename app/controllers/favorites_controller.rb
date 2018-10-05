@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
   end
 
   def create
-    favorite = current_user.favorites.create(article_id: params[:article_id])
+    favorite = current_user.favorites.create(article_id: params[:article_id])  
     respond_to do |format|
       format.js { render :template => "favorites/favorite",locals: { favorite: favorite, article: favorite.article } }
     end
