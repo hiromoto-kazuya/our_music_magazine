@@ -20,7 +20,7 @@
 
           <%= link_to(article_path(article.id)) do %>
             <p class = "article-title">
-              <%= article.title %>
+              <%= article.title.truncate(30) %>
             </p>
           <% end %>
 
@@ -29,20 +29,20 @@
             <%= link_to article.user.name, user_path(article.user.id) %>
           </div>
 
-
-
-
-
           <div class = "text-center">
             <%= article.content.truncate(100).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/,"").gsub(/<img alt=[" a-z=]+.+/, "") %>
           </div>
 
-          <p><%= article.impressionist_count %>PV</p>
-          <p><%= article.favorites.count %>いいね</p>
+          <ul class = "article-numbers-info">
+              <li id="favorite_btn_<%= article.id %>">
+                <%= render partial: "favorites/favorite", locals: {article: article} %>
+              </li>
+              <li class = "pv_count">
+                <%= article.impressionist_count %>PV
+              </li>
+          </ul>
 
-          <div id="favorite_btn_<%= article.id %>">
-            <%= render partial: "favorites/favorite", locals: {article: article} %>
-          </div>
+
 
         </div>
 

@@ -27,10 +27,9 @@
 }
 
 .article {
-  height: 750px;
+  height: 700px;
   background-color: white;
   border: 1px solid #e6e6e6;
-  margin-bottom: 20px;
   padding-right: 0px;
   padding-left: 0px;
 }
@@ -42,6 +41,7 @@
 }
 
 .catch_image img {
+  max-width: 100%;
 	display: block;
 	transition-duration: 0.3s;
 }
@@ -53,14 +53,18 @@
 }
 
 .text-information {
-  padding: 35px;
+  padding: 20px 35px;
 }
 
-.hashtag {
+.hashtag a {
   text-decoration: underline;
 }
 
 .hashtag a:link {
+  color: #337ab7;
+}
+
+.hashtag a:visited {
   color: #337ab7;
 }
 
@@ -73,4 +77,32 @@
 
 .user-info {
   margin-bottom: 15px;
+}
+
+.article-numbers-info {
+  margin: 20px 0;
+  right: 40px;
+  position: absolute;
+  bottom: 0px;
+  padding-left: 0px;
+}
+
+.article-numbers-info li {
+  float: left;
+}
+
+.favorite-heart {
+  max-width: 50px;
+  height: auto;
+}
+
+.like-count {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.pv_count {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
 }
