@@ -29,25 +29,5 @@
     </tr>
   </table>
 </section>
-<%= link_to 'お気に入り一覧', favorites_path(id: @user.id) %>
 
-<% if @user == current_user %>
-  <%= link_to 'アカウント編集', edit_user_registration_path %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-<% end %>
-
-<h3><%= "#{@user.name}の投稿一覧" %></h3>
-<table>
-  <% (@user.articles).each do |article| %>
-    <tr>
-      <th>タイトル</th>
-      <th>内容</th>
-    </tr>
-    <tr>
-      <td><%= link_to article.title, article_path(article.id) %></td>
-      <td><%== article.content.truncate(10) %></td>
-    </tr>
-
-    </p>
-  <% end %>
-</table>
+<%= render 'shared/articles', articles: (@user.articles.order(created_at: :desc)), title: "#{@user.name}の投稿一覧" %>

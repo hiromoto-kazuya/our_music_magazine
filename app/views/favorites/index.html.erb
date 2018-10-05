@@ -1,25 +1,49 @@
-<h1><%= "#{@user.name}のお気に入り一覧" %></h1>
-<table>
-  <tr>
-    <th>投稿者</th>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
-
-<% @favorites.each do |favorite| %>
-  <tr>
-    <td><%= favorite.article.user.name %></td>
-    <td><%= favorite.article.title %></td>
-    <td><%== favorite.article.content %></td>
-    <td><%= link_to '詳細を確認する', article_path(favorite.article.id) %></td>
-    <td>
-      <% if favorite.user == current_user %>
-        <% if favorite.present? %>
-          <%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete, class: 'btn btn-danger' %>
-        <% else %>
-          <%= link_to 'お気に入りする', favorites_path(article_id: favorite.article.id), method: :post, class: 'btn btn-primary' %>
+<div class = "row">
+  <div class = "articles">
+    <h2><%= "#{@user.name}のお気に入り一覧" %></h2>
+    <% @favorites.each do |favorite| %>
+      <% article = favorite.article %>
+      <div class = "article col-md-4 col-sm-6 col-xs-6">
+        <%= link_to(article_path(article.id)) do %>
+          <div class = "catch_image">
+            <%= image_tag("#{article.catch_image}", size: "390×260") %>
+          </div>
         <% end %>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+        <div class = "text-information">
+
+          <p class = "created_day">
+            <%= article.created_at.to_date %>
+          </p>
+
+          <p class = "hashtag">
+            <%= render_with_hashtags(article.hashtag) %>
+          </p>
+
+          <%= link_to(article_path(article.id)) do %>
+            <p class = "article-title">
+              <%= article.title.truncate(30) %>
+            </p>
+          <% end %>
+
+          <div class = "user-info">
+            <%= link_to(user_path(article.user.id)) do %>
+              <%= image_tag("#{article.user.icon_image}", size: "40x40") %>
+            <% end %>
+            <%= link_to article.user.name, user_path(article.user.id) %>
+          </div>
+
+          <div class = "text-center">
+            <%= article.content.truncate(100).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/,"").gsub(/<img alt=[" a-z=]+.+/, "") %>
+          </div>
+
+          <ul class = "article-numbers-info">
+            <div id="favorite_btn_<%= article.id %>">
+              <%= render partial: "favorites/favorite", locals: {article: article} %>
+            </div>
+          </ul>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
