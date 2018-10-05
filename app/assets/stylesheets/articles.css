@@ -38,6 +38,7 @@
   width: 100%;
 	overflow: hidden;
   background: #000;
+  max-height: 240px;
 }
 
 .catch_image img {
@@ -105,4 +106,13 @@
   font-weight: bold;
   margin-top: 10px;
   margin-left: 30px;
+}
+
+/*articles投稿画面*/
+div .form-control[readonly]{
+  background-color: #fff;
+}
+
+input {
+  margin-bottom: 15px;
 }

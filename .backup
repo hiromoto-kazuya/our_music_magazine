@@ -1,3 +1,5 @@
-<li class = "like-count">
-  destroyいいね！<%= article.favorites.count %>件
-</li>
+<div class="file_field">
+  <%= form.label :キャッチ画像 %>
+  <%= form.file_field :catch_image, id: :article_image %>
+  <%= form.hidden_field :catch_image_cache %>
+</div>

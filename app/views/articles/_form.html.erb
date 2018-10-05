@@ -9,27 +9,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :catch_image %>
-    
-    <%= form.file_field :catch_image, id: :article_image %>
-    <%= form.hidden_field :catch_image_cache %>
+  <%= form.text_field :title, class: "form-control",placeholder: "タイトル(100文字以内)"  %>
+  <%= form.text_field :hashtag, class: "form-control",placeholder: "ハッシュタグ(例. #rock, #hiphop, #liveレポート)"  %>
+
+  <div class="input_group">
+    <label class="input-group-btn">
+      <span class="btn btn-primary">
+        キャッチ画像を選択
+        <%= form.file_field :catch_image, id: :article_image, style: "display:none" %>
+        <%= form.hidden_field :catch_image_cache %>
+      </span>
+    </label>
+    <input type="text" class="form-control" readonly="">
   </div>
 
-  <div class="article_title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-  <div class="article_hashtag">
-    <%= form.label :hashtag %>
-    <%= form.text_field :hashtag %>
-  </div>
+  <script>
+    $(document).on('change', ':file', function() {
+      var input = $(this),
+      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+      input.parent().parent().next(':text').val(label);
+    });
+  </script>
+
   <div class="article_content">
-    <%= form.label :content %>
+    <%= form.label :投稿内容 %>
     <%= form.cktext_area :content %>
   </div>
+
   <div class = "actions">
-    <%= form.submit %>
+    <%= form.submit "投稿する" %>
   </div>
 <% end %>
 
