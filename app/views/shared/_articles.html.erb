@@ -34,12 +34,11 @@
           </div>
 
           <ul class = "article-numbers-info">
-              <li id="favorite_btn_<%= article.id %>">
+              <div id="favorite_btn_<%= article.id %>">
                 <%= render partial: "favorites/favorite", locals: {article: article} %>
-              </li>
-              <li class = "pv_count">
-                <%= article.impressionist_count %>PV
-              </li>
+              </div>
+
+              
           </ul>
 
         </div>
