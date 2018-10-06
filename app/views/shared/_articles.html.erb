@@ -3,11 +3,13 @@
     <h2><%= title %></h2>
     <% articles.each do |article| %>
       <div class = "article col-md-4 col-sm-6 col-xs-6">
+
         <%= link_to(article_path(article.id)) do %>
           <div class = "catch_image">
             <%= image_tag("#{article.catch_image}", size: "390×260") %>
           </div>
         <% end %>
+
         <div class = "text-information">
 
           <p class = "created_day">
