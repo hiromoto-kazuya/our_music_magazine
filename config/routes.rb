@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, :only => [:show]
   resources :articles do
+    member do
+      get "favorite_users" => "favorites#favorite_users"
+    end
     resources :comments
     collection do
       post :confirm

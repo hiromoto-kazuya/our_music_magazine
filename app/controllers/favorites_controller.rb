@@ -6,8 +6,13 @@ class FavoritesController < ApplicationController
     @favorites = Favorite.where(user_id: params[:id]).order(created_at: :desc)
   end
 
+  def favorite_users
+    @article = Article.find(params[:id])
+    @favorites = Favorite.where(article_id: @article.id)
+  end
+
   def create
-    favorite = current_user.favorites.create(article_id: params[:article_id])  
+    favorite = current_user.favorites.create(article_id: params[:article_id])
     respond_to do |format|
       format.js { render :template => "favorites/favorite",locals: { favorite: favorite, article: favorite.article } }
     end

@@ -7,7 +7,7 @@
       <% end %>
     </li>
     <li class = "like-count">
-      いいね！<%= link_to article.favorites.count, "#" %>件
+      いいね！<%= link_to article.favorites.count, favorite_users_article_path(article) %>件
     </li>
   <% else %>
     <li>
@@ -16,7 +16,7 @@
       <% end %>
     </li>
     <li class = "like-count">
-      いいね！<%= link_to article.favorites.count, "#" %>件
+      いいね！<%= link_to article.favorites.count, favorite_users_article_path(article) %>件
     </li>
   <% end %>
 <% end %>
