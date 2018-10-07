@@ -1,50 +1,48 @@
 <div class = "row">
-  <div class = "articles">
-    <h2><%= title %></h2>
-    <% articles.each do |article| %>
-      <div class = "article col-md-4 col-sm-6 col-xs-6">
+  <h2><%= title %></h2>
+  <% articles.each do |article| %>
+    <div class = "article col-md-4 col-sm-6 col-xs-6">
+
+      <%= link_to(article_path(article.id)) do %>
+        <div class = "catch_image">
+          <%= image_tag("#{article.catch_image}", size: "390×260") %>
+        </div>
+      <% end %>
+
+      <div class = "text-information">
+
+        <p class = "created_day">
+          <%= article.created_at.to_date %>
+        </p>
+
+        <p class = "hashtag">
+          <%= render_with_hashtags(article.hashtag) %>
+        </p>
 
         <%= link_to(article_path(article.id)) do %>
-          <div class = "catch_image">
-            <%= image_tag("#{article.catch_image}", size: "390×260") %>
-          </div>
+          <p class = "article-title">
+            <%= article.title.truncate(30) %>
+          </p>
         <% end %>
 
-        <div class = "text-information">
-
-          <p class = "created_day">
-            <%= article.created_at.to_date %>
-          </p>
-
-          <p class = "hashtag">
-            <%= render_with_hashtags(article.hashtag) %>
-          </p>
-
-          <%= link_to(article_path(article.id)) do %>
-            <p class = "article-title">
-              <%= article.title.truncate(30) %>
-            </p>
+        <div class = "user-info">
+          <%= link_to(user_path(article.user.id)) do %>
+            <%= image_tag("#{article.user.icon_image}", size: "40x40") %>
           <% end %>
-
-          <div class = "user-info">
-            <%= link_to(user_path(article.user.id)) do %>
-              <%= image_tag("#{article.user.icon_image}", size: "40x40") %>
-            <% end %>
-            <%= link_to article.user.name, user_path(article.user.id) %>
-          </div>
-
-          <div class = "text-center">
-            <%= article.content.truncate(100).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/,"").gsub(/<img alt=[" a-z=]+.+/, "") %>
-          </div>
-
-          <ul class = "article-numbers-info">
-            <div id="favorite_btn_<%= article.id %>">
-              <%= render partial: "favorites/favorite", locals: {article: article} %>
-            </div>
-          </ul>
-
+          <%= link_to article.user.name, user_path(article.user.id) %>
         </div>
+
+        <div class = "index-article-contents">
+          <%= article.content.truncate(100).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/,"").gsub(/<img alt=[" a-z=]+.+/, "") %>
+        </div>
+
+        <ul class = "article-numbers-info">
+          <div id="favorite_btn_<%= article.id %>">
+            <%= render partial: "favorites/favorite", locals: {article: article} %>
+          </div>
+        </ul>
+
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

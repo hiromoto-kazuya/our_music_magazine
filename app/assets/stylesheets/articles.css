@@ -5,25 +5,13 @@
   background-size: cover;
 }
 
-.index-contents {
+.article-index-contents {
   position:relative;
 }
 
-.index-contents .row {
+.article-index-contents .row {
   margin-right: 0px;
   margin-left: 0px;
-}
-
-@media screen and (max-width: 992px) {
-  .favorite-articles {
-    top: 1300px;
-  }
-}
-
-@media screen and (min-width: 993px) {
-  .favorite-articles {
-    top: 700px;
-  }
 }
 
 .article {
@@ -37,12 +25,13 @@
 .catch_image {
   width: 100%;
 	overflow: hidden;
-  background: #000;
+  background: #E6E6E6;
   max-height: 240px;
 }
 
 .catch_image img {
   max-width: 100%;
+  margin: 0 auto;
 	display: block;
 	transition-duration: 0.3s;
 }
@@ -102,7 +91,7 @@
   margin-top: 10px;
 }
 
-.pv_count {
+.pv-count {
   font-weight: bold;
   margin-top: 10px;
   margin-left: 30px;
@@ -115,4 +104,39 @@ div .form-control[readonly]{
 
 input {
   margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+/*article#show 詳細画面*/
+
+.article-show {
+  background-color: white;
+  border: 1px solid #e6e6e6;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.show-article-contents {
+  line-height: 4rem;
+}
+
+.show-article-numbers-info {
+  margin: 20px 0 0 -15px;
+  right: 40px;
+  bottom: 0px;
+  padding-left: 0px;
+  height: 30px;
+}
+
+.show-article-numbers-info li {
+  float: left;
+}
+
+.show-article-numbers-info .pv-count {
+  margin-left: 20px;
 }
