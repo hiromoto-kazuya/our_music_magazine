@@ -11,6 +11,7 @@ li {
 
 a:link {
   color:#000000;
+
 }
 
 a:visited {
@@ -20,7 +21,7 @@ a:visited {
 
 a:hover {
   color:#000000;
-  text-decoration:none
+  text-decoration: underline;
 }
 
 a:active {
@@ -156,6 +157,10 @@ li.menu__single:hover ul.menu__second-level {
     margin: 30px 0px;
     right: 30px;
   }
+
+  .header-space {
+    height: 130px;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -177,12 +182,12 @@ li.menu__single:hover ul.menu__second-level {
     margin: 18px 0px;
     right: 30%;
   }
+
+  .header-space {
+    height: 100px;
+  }
 }
 
-/*コンテンツ部分*/
-.header-space {
-  height: 100px;
-}
 
 /*footer*/
 footer {

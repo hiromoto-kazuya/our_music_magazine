@@ -1,3 +1,0 @@
-<li class = "like-count">
-  destroyいいね！<%= article.favorites.count %>件
-</li>

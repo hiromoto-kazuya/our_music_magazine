@@ -39,6 +39,7 @@
             <a href="#" class="init-bottom">アカウント</a>
             <ul class="menu__second-level">
               <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+              <li><%= link_to 'お気に入り一覧', favorites_path(id: current_user.id) %></li>
               <li><%= link_to 'ユーザー編集', edit_user_registration_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul>
