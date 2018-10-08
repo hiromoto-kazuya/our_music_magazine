@@ -25,7 +25,7 @@ a.user-name-link {
 
 .user-introduce-message {
   margin-left: 130px;
-  margin-top: 65px;
+  margin-top: 80px;
   height: 75px;
 }
 
@@ -33,6 +33,7 @@ a.user-name-link {
   position: absolute;
   top: 37px;
   left: 105px;
+  margin-top: 5px;
 }
 
 .users-index-follow-set li {

@@ -90,7 +90,7 @@ $(function() {
 
           <div class = "user-introduce-message">
             <% if user.introduce_message && user.introduce_message.length > 80 %>
-              <%= user.introduce_message.truncate(80) %>
+              <%= user.introduce_message.truncate(50) %>
             <% else %>
               <%= user.introduce_message %>
             <% end %>
