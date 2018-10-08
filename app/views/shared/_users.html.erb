@@ -1,12 +1,42 @@
 <h2><%= title %></h2>
 
-<% users.each do |user| %>
-  <% @user_id = favorite.user_id %>
-  <% user = User.find(@user_id) %>
-  <div class = "favorite-user-info">
-    <%= link_to(user_path(user)) do %>
-      <%= image_tag("#{user.icon_image.icon_thumb}", size: "50x50", class: "user-icon" ) %>
+<div class = "users-index">
+  <% users.each do |user| %>
+  
+    <% if user.is_a?(User) %>
+      <% @user = user %>
+    <% else %>
+      <% @user_id = user.user_id %>
+      <% @user = User.find(@user_id) %>
     <% end %>
-    <%= link_to user.name ,user_path(user) %><br/><br/>
-  </div>
-<% end %>
+
+    <div class = "user col-md-6 col-sm-12 col-xs-12">
+      <%= link_to(user_path(@user)) do %>
+        <%= image_tag("#{@user.icon_image}", class: "user-icon-large users-index-icon" ) %>
+      <% end %>
+
+      <%= link_to @user.name ,user_path(@user), { class: "user-name-link"} %>
+
+      <ul class = "users-index-follow-set">
+        <li class = "users-index-follow-number">
+          <%= render '/users/follow_count', user: @user %>
+        </li>
+
+        <% if @user != current_user %>
+          <li class = "users-index-follow-btn">
+            <%= render 'users/follow_form', user: @user %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class = "user-introduce-message">
+        <% if @user.introduce_message && @user.introduce_message.length > 80 %>
+          <%= @user.introduce_message.truncate(80) %>
+        <% else %>
+          <%= @user.introduce_message %>
+        <% end %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

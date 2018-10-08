@@ -61,22 +61,45 @@ $(function() {
               <li id="favorite_btn_<%= article.id %>">
                 <%= render partial: "favorites/favorite", locals: {article: article} %>
               </li>
-              <li class = "pv_count">
-                <%= article.impressionist_count %>PV
-              </li>
           </ul>
 
         </div>
       </div>
     <% else %>
       <% user = article %>
-      <tr class = "searched_users">
-        <td><%= link_to user.name, user_path(id: user.id ) %></td>
-        <td><%= user.introduce_message %></td>
-        <% if user != current_user %>
-          <td><%= render 'users/follow_form', user: user %></td>
-        <% end %>
-      </tr>
+
+      <div class = "searched_users users-index">
+        <div class = "user col-md-6 col-sm-12 col-xs-12">
+          <%= link_to(user_path(user)) do %>
+            <%= image_tag("#{user.icon_image}", class: "user-icon-large users-index-icon" ) %>
+          <% end %>
+
+          <%= link_to user.name ,user_path(user), { class: "user-name-link"} %>
+
+          <ul class = "users-index-follow-set">
+            <li class = "users-index-follow-number">
+              <%= render '/users/follow_count', user: user %>
+            </li>
+
+            <% if user != current_user %>
+              <li class = "users-index-follow-btn">
+                <%= render 'users/follow_form', user: user %>
+              </li>
+            <% end %>
+          </ul>
+
+          <div class = "user-introduce-message">
+            <% if user.introduce_message && user.introduce_message.length > 80 %>
+              <%= user.introduce_message.truncate(80) %>
+            <% else %>
+              <%= user.introduce_message %>
+            <% end %>
+          </div>
+
+        </div>
+
+      </div>
+
     <% end %>
   <% end %>
 </table>
