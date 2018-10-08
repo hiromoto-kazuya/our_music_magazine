@@ -53,31 +53,29 @@
     </div>
   </div>
 
-  <div class = "show-right-part col-md-4 col-sm-4 col-xs-4">
-    <div class = "post-user">
-      <%= link_to(user_path(@article.user.id)) do %>
-        <%= image_tag("#{@article.user.icon_image}", class: "user-icon-large") %>
-      <% end %>
+  <div class = "post-user col-md-4 col-sm-4 col-xs-4">
+    <%= link_to(user_path(@article.user.id)) do %>
+      <%= image_tag("#{@article.user.icon_image}", class: "user-icon-large") %>
+    <% end %>
 
-      <%= link_to @article.user.name ,user_path(@article.user), { class: "post-user-name-link"} %>
+    <%= link_to @article.user.name ,user_path(@article.user), { class: "post-user-name-link"} %>
 
-      <ul class = "post-user-follow-set">
-        <li class = "users-index-follow-number">
-          <%= render '/users/follow_count', user: @article.user %>
+    <ul class = "post-user-follow-set">
+      <li class = "users-index-follow-number">
+        <%= render '/users/follow_count', user: @article.user %>
+      </li>
+
+      <% if @article.user != current_user %>
+        <li class = "users-index-follow-btn">
+          <%= render 'users/follow_form', user: @article.user %>
         </li>
+      <% end %>
+    </ul>
 
-        <% if @article.user != current_user %>
-          <li class = "users-index-follow-btn">
-            <%= render 'users/follow_form', user: @article.user %>
-          </li>
-        <% end %>
-      </ul>
-
-      <div class = "post-user-introduce-message">
-        <%= @article.user.introduce_message %>
-      </div>
-
+    <div class = "post-user-introduce-message">
+      <%= @article.user.introduce_message %>
     </div>
 
   </div>
+
 </div>
