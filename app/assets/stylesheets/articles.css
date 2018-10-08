@@ -205,7 +205,6 @@ a.comment-user-name {
   border: 1px solid #e6e6e6;
   width:28%;
   padding: 15px;
-  z-index: -1;
 }
 
 a.post-user-name-link {
