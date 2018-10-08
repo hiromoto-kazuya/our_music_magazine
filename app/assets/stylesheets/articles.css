@@ -125,6 +125,11 @@ input {
   line-height: 4rem;
 }
 
+.show-article-contents p img {
+  object-fit: contain;
+  max-width: 100%;
+}
+
 .show-article-numbers-info {
   margin: 20px 0 0 -15px;
   right: 40px;
