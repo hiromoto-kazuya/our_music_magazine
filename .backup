@@ -33,3 +33,42 @@
     </div>
   <% end %>
 </div>
+
+
+
+
+
+
+
+
+
+
+<section id="user-detail" class="scroll-page bg-white">
+
+  <table>
+    <tr>
+      <th>アイコン</th>
+      <td><%= image_tag("#{@user.icon_image}", class: "user-icon-large" ) %></td>
+    </tr>
+    <tr>
+      <th>名前</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>自己紹介文</th>
+      <td><%= @user.introduce_message %></td>
+    </tr>
+    <% if @user != current_user %>
+      <tr>
+        <td>
+          <%= render 'follow_form', user: @user %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>
+        <%= render 'follow_count', user: @user %>
+      </td>
+    </tr>
+  </table>
+</section>

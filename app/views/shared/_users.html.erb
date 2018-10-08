@@ -2,7 +2,7 @@
 
 <div class = "users-index">
   <% users.each do |user| %>
-  
+
     <% if user.is_a?(User) %>
       <% @user = user %>
     <% else %>
@@ -30,8 +30,8 @@
       </ul>
 
       <div class = "user-introduce-message">
-        <% if @user.introduce_message && @user.introduce_message.length > 80 %>
-          <%= @user.introduce_message.truncate(80) %>
+        <% if @user.introduce_message && @user.introduce_message.length > 60 %>
+          <%= @user.introduce_message.truncate(60) %>
         <% else %>
           <%= @user.introduce_message %>
         <% end %>
