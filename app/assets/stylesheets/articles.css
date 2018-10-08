@@ -194,16 +194,12 @@ a.comment-user-name {
 
 /* article#showの右側固定バー */
 
-.show-right-part {
-  padding-right: 0px;
-  padding-left: 0px;
-}
-
 .post-user {
   background-color: white;
-  position: fixed;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
   border: 1px solid #e6e6e6;
-  width:28%;
   padding: 15px;
 }
 
