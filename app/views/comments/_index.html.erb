@@ -1,13 +1,25 @@
 <ul>
   <% comments.each do |comment| %>
     <% if comment.id.present? %>
-        <p>
-          <%= link_to comment.user.name, user_path(comment.user.id) %>
-          <%= comment.content %>
-          <% if comment.user == current_user %>
-            <%= link_to '削除', article_comment_path(comment.article_id,comment.id), method: :delete, remote: true %>
-          <% end %>
-        </p>
+        <div class = "comment">
+          <div class = "comment-header">
+            <%= link_to(user_path(comment.user.id)) do %>
+              <%= image_tag("#{comment.user.icon_image}", size: "40x40", class: "user-icon" ) %>
+            <% end %>
+            <%= link_to comment.user.name, user_path(comment.user.id), { class: "comment-user-name" } %>
+            <div class = "user-article-count">
+              記事投稿数: <%= comment.user.articles.count %>
+            </div>
+          </div>
+          <div class = "comment-content">
+            <%= comment.content %>
+            <div class = "comment-delete-link">
+              <% if comment.user == current_user %>
+                <%= link_to '削除', article_comment_path(comment.article_id,comment.id), method: :delete, remote: true %>
+              <% end %>
+            </div>
+          </div>
+        </div>
     <% end %>
   <% end %>
 </ul>

@@ -27,7 +27,7 @@
 
         <div class = "user-info">
           <%= link_to(user_path(article.user.id)) do %>
-            <%= image_tag("#{article.user.icon_image}", size: "40x40") %>
+            <%= image_tag("#{article.user.icon_image}", size: "40x40", class: "user-icon") %>
           <% end %>
           <%= link_to article.user.name, user_path(article.user.id) %>
         </div>
