@@ -1,5 +1,5 @@
-<div class = "row">
-  <div class = " col-md-8 col-sm-8 col-xs-8">
+<div class = "article-show-wrapper row">
+  <div class = "col-md-8 col-sm-8 col-xs-8">
     <div class = "article-show">
       <div class = "catch_image">
         <%= image_tag("#{@article.catch_image}", size: "390×260") %>
@@ -17,13 +17,6 @@
         <p class = "article-title">
           <%= @article.title %>
         </p>
-
-        <div class = "user-info">
-          <%= link_to(user_path(@article.user.id)) do %>
-            <%= image_tag("#{@article.user.icon_image}", size: "40x40", class: "user-icon") %>
-          <% end %>
-          <%= link_to @article.user.name, user_path(@article.user.id) %>
-        </div>
 
         <div class = "show-article-contents">
           <%== @article.content %>
@@ -57,6 +50,33 @@
           <%= render partial: 'comments/form', locals: { comment: @comment, article: @article } %>
         <% end %>
       </div>
+    </div>
+  </div>
+
+  <div class = "show-right-part col-md-4 col-sm-4 col-xs-4">
+    <div class = "post-user">
+      <%= link_to(user_path(@article.user.id)) do %>
+        <%= image_tag("#{@article.user.icon_image}", class: "user-icon-large") %>
+      <% end %>
+
+      <%= link_to @article.user.name ,user_path(@article.user), { class: "post-user-name-link"} %>
+
+      <ul class = "post-user-follow-set">
+        <li class = "users-index-follow-number">
+          <%= render '/users/follow_count', user: @article.user %>
+        </li>
+
+        <% if @article.user != current_user %>
+          <li class = "users-index-follow-btn">
+            <%= render 'users/follow_form', user: @article.user %>
+          </li>
+        <% end %>
+      </ul>
+
+      <div class = "post-user-introduce-message">
+        <%= @article.user.introduce_message %>
+      </div>
+
     </div>
 
   </div>

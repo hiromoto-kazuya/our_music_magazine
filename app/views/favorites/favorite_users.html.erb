@@ -1,12 +1,1 @@
-<h2>この記事をいいねしたユーザー(<%= @favorites.length %>人)</h2>
-
-<% @favorites.each do |favorite| %>
-  <% @user_id = favorite.user_id %>
-  <% user = User.find(@user_id) %>
-  <div class = "favorite-user-info">
-    <%= link_to(user_path(user)) do %>
-      <%= image_tag("#{user.icon_image.icon_thumb}", size: "50x50", class: "user-icon" ) %>
-    <% end %>
-    <%= link_to user.name ,user_path(user) %><br/><br/>
-  </div>
-<% end %>
+<%= render 'shared/users', users: @favorites, title: "いいねしたユーザー(#{@favorites.length}人)" %>

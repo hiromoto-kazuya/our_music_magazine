@@ -1,0 +1,60 @@
+/* index */
+.users-index {
+  width: 100%;
+}
+
+.user {
+  position: relative;
+  height: 130px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+}
+
+.users-index-icon {
+  position: absolute;
+  margin: 15px 0px;
+}
+
+a.user-name-link {
+  position: absolute;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 130px;
+  margin-top: 10px;
+}
+
+.user-introduce-message {
+  margin-left: 130px;
+  margin-top: 65px;
+  height: 75px;
+}
+
+.users-index-follow-set {
+  position: absolute;
+  top: 37px;
+  left: 105px;
+}
+
+.users-index-follow-set li {
+  float: left;
+}
+
+.users-index-follow-number {
+  margin-top: 4px;
+  margin-right: 15px;
+}
+
+/* show */
+.user-show {
+  min-height: 165px;
+  position: relative;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 20px;
+}
+
+.user-show .user-introduce-message {
+  height: auto;
+  margin-bottom: 10px;
+}

@@ -1,3 +1,7 @@
+.article-show-wrapper {
+  position: relative;
+}
+
 /* #index */
 .top-image-space {
   background-image: url("omm_top.png");
@@ -63,10 +67,6 @@
   line-height: 1.3;
   margin-bottom: 17px;
   text-align: left;
-}
-
-.user-info {
-  margin-bottom: 15px;
 }
 
 .article-numbers-info {
@@ -172,8 +172,8 @@ a.comment-user-name {
 
 .user-article-count {
   position: absolute;
-  top: 22px;
-  left: 55px;
+  top: 25px;
+  left: 65px;
 }
 
 .comment-content {
@@ -190,4 +190,36 @@ a.comment-user-name {
 .comment-delete-link {
   position: absolute;
   right: 5%;
+}
+
+/* article#showの右側固定バー */
+
+.show-right-part {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.post-user {
+  background-color: white;
+  position: fixed;
+  border: 1px solid #e6e6e6;
+  width:28%;
+  padding: 15px;
+  z-index: -1;
+}
+
+a.post-user-name-link {
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0px 15px;
+}
+
+.post-user-follow-set {
+  padding-left: 0px;
+  margin-bottom: -10px;
+}
+
+.post-user-follow-set .users-index-follow-btn {
+  margin: 5px 0;
 }
