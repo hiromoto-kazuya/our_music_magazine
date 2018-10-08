@@ -1,4 +1,4 @@
 <div id = "follow_count_<%= user.id %>">
-  フォロー<%= link_to "#{user.following.count}", relationships_path(id: user.id, name: 'follow_index')  %>
-  フォロワー<%= link_to "#{user.followers.count}", relationships_path(id: user.id, name: 'follower_index') %>
+  フォロー<%= link_to "#{user.following.count}", relationships_path(id: user.id, name: 'follow_index'), { class: "count-number"}  %>
+  フォロワー<%= link_to "#{user.followers.count}", relationships_path(id: user.id, name: 'follower_index'), { class: "count-number"} %>
 </div>
