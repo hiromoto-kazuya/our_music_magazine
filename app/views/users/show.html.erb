@@ -15,7 +15,11 @@
         <%= render '/users/follow_count', user: @user %>
       </li>
 
-      <% if @user != current_user %>
+      <% if @user == current_user %>
+        <li class = "user-show-edit-btn">
+          <%= link_to 'プロフィール編集', edit_user_registration_path %>
+        </li>
+      <% else %>
         <li class = "users-index-follow-btn">
           <%= render 'users/follow_form', user: @user %>
         </li>

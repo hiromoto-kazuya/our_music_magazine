@@ -1,74 +1,58 @@
+devise/registrations#editの原コード
+<h2>プロフィール編集</h2>
 
-<div class = "users-index">
-  <% @favorites.each do |favorite| %>
-    <% @user_id = favorite.user_id %>
-    <% user = User.find(@user_id) %>
-    <div class = "user col-md-6 col-sm-12 col-xs-12">
-      <%= link_to(user_path(user)) do %>
-        <%= image_tag("#{user.icon_image}", class: "user-icon-large users-index-icon" ) %>
-      <% end %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+  </div>
 
-      <%= link_to user.name ,user_path(user), { class: "user-name-link"} %>
+  <div class="field">
+    <%= f.label :icon_image %>
+    <%= f.file_field :icon_image, id: :user_image %>
+  </div>
 
-      <ul class = "users-index-follow-set">
-        <li class = "users-index-follow-number">
-          <%= render '/users/follow_count', user: user %>
-        </li>
+  <div class="field">
+    <%= f.label :introduce_message %><br />
+    <%= f.text_area :introduce_message, autocomplete: "introduce_message" %>
+  </div>
 
-        <% if user != current_user %>
-          <li class = "users-index-follow-btn">
-            <%= render 'users/follow_form', user: user %>
-          </li>
-        <% end %>
-      </ul>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
 
-      <div class = "user-introduce-message">
-        <% if user.introduce_message && user.introduce_message.length > 80 %>
-          <%= user.introduce_message.truncate(80) %>
-        <% else %>
-          <%= user.introduce_message %>
-        <% end %>
-      </div>
-
-    </div>
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
-</div>
 
-
-
-
-
-
-
-
-
-
-<section id="user-detail" class="scroll-page bg-white">
-
-  <table>
-    <tr>
-      <th>アイコン</th>
-      <td><%= image_tag("#{@user.icon_image}", class: "user-icon-large" ) %></td>
-    </tr>
-    <tr>
-      <th>名前</th>
-      <td><%= @user.name %></td>
-    </tr>
-    <tr>
-      <th>自己紹介文</th>
-      <td><%= @user.introduce_message %></td>
-    </tr>
-    <% if @user != current_user %>
-      <tr>
-        <td>
-          <%= render 'follow_form', user: @user %>
-        </td>
-      </tr>
+  <div class="field">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
-    <tr>
-      <td>
-        <%= render 'follow_count', user: @user %>
-      </td>
-    </tr>
-  </table>
-</section>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>

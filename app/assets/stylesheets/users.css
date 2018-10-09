@@ -25,7 +25,7 @@ a.user-name-link {
 
 .user-introduce-message {
   margin-left: 130px;
-  margin-top: 65px;
+  margin-top: 80px;
   height: 75px;
 }
 
@@ -33,6 +33,7 @@ a.user-name-link {
   position: absolute;
   top: 37px;
   left: 105px;
+  margin-top: 5px;
 }
 
 .users-index-follow-set li {
@@ -57,4 +58,22 @@ a.user-name-link {
 .user-show .user-introduce-message {
   height: auto;
   margin-bottom: 10px;
+}
+
+.user-show-edit-btn {
+  color: #444;
+  font-weight: bold;
+  border: 1px solid #444;
+  border-radius: 25px;
+  padding: 3px 8px;
+}
+
+/* devise/registraitons#edit */
+
+.user-edit-form .form-control {
+  margin-bottom: 10px;
+}
+
+.user-edit-form textarea {
+  height: 250px;
 }

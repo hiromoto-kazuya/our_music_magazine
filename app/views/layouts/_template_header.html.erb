@@ -30,7 +30,9 @@
             <li><%= link_to '新着記事', new_articles_path %></li>
             <li><%= link_to '人気記事', favorite_articles_path %></li>
             <li><%= link_to '注目記事', many_pvs_articles_path %></li>
-            <li><%= link_to 'フォロー', following_articles_path %></li>
+            <% if user_signed_in? %>
+              <li><%= link_to 'フォロー', following_articles_path %></li>
+            <% end %>
           </ul>
         </li>
 
@@ -40,7 +42,7 @@
             <ul class="menu__second-level">
               <li><%= link_to "マイページ", user_path(current_user.id) %></li>
               <li><%= link_to 'お気に入り一覧', favorites_path(id: current_user.id) %></li>
-              <li><%= link_to 'ユーザー編集', edit_user_registration_path %></li>
+              <li><%= link_to 'アカウント設定',  edit_user_registration_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
