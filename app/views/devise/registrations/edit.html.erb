@@ -29,7 +29,6 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-
       <div class="field">
         <%= f.label :パスワード変更 %> <i>(変更したい時のみご記入ください)</i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control",placeholder: "6文字以上" %>

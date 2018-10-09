@@ -1,3 +1,298 @@
+消えかけのテレビのようなデザイン HTML SCSS
+<link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
+<div class="glitch" data-text="OMM">OMM</div>
+
+
+
+body{
+  background:black;
+  font-family: 'Varela', sans-serif;
+}
+
+.glitch{
+  color:white;
+  font-size:100px;
+  position:relative;
+  width:400px;
+  margin:0 auto;
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;
+  text-shadow:-1px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-2px;
+  text-shadow:1px 0 blue;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}
+
+
+
+文字の縁に沿ってアニメが動いていく HTML SCSS
+
+<svg viewBox="0 0 800 600">
+  <symbol id="s-text">
+    <text text-anchor="middle"
+          x="50%"
+          y="35%"
+          class="text--line"
+          >
+      Our Music
+    </text>
+    <text text-anchor="middle"
+          x="50%"
+          y="68%"
+          class="text--line2"
+          >
+      Magazine
+    </text>
+  </symbol>
+
+  <g class="g-ants">
+    <use xlink:href="#s-text"
+      class="text-copy"></use>
+    <use xlink:href="#s-text"
+      class="text-copy"></use>
+    <use xlink:href="#s-text"
+      class="text-copy"></use>
+    <use xlink:href="#s-text"
+      class="text-copy"></use>
+    <use xlink:href="#s-text"
+      class="text-copy"></use>
+  </g>
+</svg>
+
+
+$colors: #000000, #000000, #000000, #000000, #000000;
+
+BODY svg{
+  font: 13em/1 Arial;
+
+}
+
+.text--line {
+  font-size: .7em;
+  }
+
+svg {
+  opacity: 0.7;
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  height: 100%;
+  }
+
+$max: 5;
+$stroke-step: 7%;
+.text-copy {
+  fill: none;
+  stroke: white;
+  stroke-dasharray: $stroke-step $stroke-step * ($max - 1);
+  stroke-width: 3px;
+
+  animation: stroke-offset 9s infinite linear;
+
+  @for $item from 1 through $max {
+    $stroke-color: nth($colors, $item);
+
+    &:nth-child(#{$item}) {
+      stroke: $stroke-color;
+      stroke-dashoffset: $stroke-step * $item;
+      }
+    }
+  }
+
+@keyframes stroke-offset {
+  50% {
+    stroke-dashoffset: $stroke-step * $max;
+    stroke-dasharray: 0 $stroke-step * $max*2.5;
+  }
+}
+
+
+
+重なった文字が横から現れる  HTML css
+<p class="text-progress" data-txt="THE PROGRESSIVE ERA">THE PROGRESSIVE ERA</p>
+
+.text-progress {
+  position: relative;
+  width: 500px;
+  height: 100%;
+  top: 300px;
+  line-height: 100px;
+  margin: 0 auto;
+  font-size: 20px;
+  text-align: center;
+  color: #ccc;
+}
+
+.text-progress::after {
+    content: attr(data-txt);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 100%;
+    line-height: 100px;
+    color: #1a1e24;
+    clip: rect(0,0,100px,0);
+    transition: clip 1.5s linear;
+}
+
+.text-progress:hover::after {
+    clip: rect(0,300px,100px,0);
+}
+
+
+グラデーション背景のHTML CSS
+
+<div class="holder">
+<div class="first"></div>
+<div class="second"></div>
+<div class="third"></div>
+<div class="txt">
+  <h1>Our Music Magazine</h1>
+
+</div>
+</div>
+
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Bitter);
+body {
+  /* margin: 0; */
+  font-family: 'Bitter', serif;
+  /* text-align: center; */
+}
+.holder,
+.first,
+.second,
+.third {
+  height: 100%;
+  width: 100vw;
+  opacity: 0.5;
+  z-index:1;
+}
+.first,
+.second,
+.third {
+  position: absolute;
+}
+.second,
+.third {
+  opacity: 0;
+}
+.holder {
+  height: 100%;
+  position: relative;
+
+}
+.first {
+  animation: first 10s infinite;
+  background: linear-gradient(#5ff8ca, #60e08c);
+}
+  @keyframes first {
+    0% {opacity: 1.0;}
+    10% {opacity: 0.8;}
+    20% {opacity: 0.6;}
+    30% {opacity: 0.4;}
+    40% {opacity: 0.2;}
+    50% {opacity: 0.1;}
+    60% {opacity: 0.2;}
+    70% {opacity: 0.4;}
+    80% {opacity: 0.6;}
+    90% {opacity: 0.8;}
+    100% {opacity: 1.0;}
+  }
+
+.second {
+  animation: second 10s infinite; animation-delay: 2s;
+  background: linear-gradient(#19eaa6, #00a1f0);
+}
+  @keyframes second {
+    0% {opacity: 0;}
+    10% {opacity: 0.2;}
+    20% {opacity: 0.4;}
+    30% {opacity: 0.6;}
+    40% {opacity: 0.8;}
+    50% {opacity: 1.0;}
+    60% {opacity: 0.8;}
+    70% {opacity: 0.6;}
+    80% {opacity: 0.4;}
+    90% {opacity: 0.2;}
+    100% {opacity: 0;}
+  }
+
+.third {
+  animation: third 10s infinite;
+  animation-delay: 8s;
+  background: linear-gradient(#aab7f8, #ff75c6);
+}
+  @keyframes third {
+    0% {opacity: 0;}
+    10% {opacity: 0.2;}
+    20% {opacity: 0.4;}
+    30% {opacity: 0.6;}
+    40% {opacity: 0.8;}
+    50% {opacity: 1.0;}
+    60% {opacity: 0.8;}
+    70% {opacity: 0.6;}
+    80% {opacity: 0.4;}
+    90% {opacity: 0.2;}
+    100% {opacity: 0;}
+  }
+
+.txt {
+  margin-top: calc(50vh - 43px);
+  position: absolute;
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
 devise/registrations#editの原コード
 <h2>プロフィール編集</h2>
 
