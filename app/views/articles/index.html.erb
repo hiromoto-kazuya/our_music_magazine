@@ -1,24 +1,37 @@
 <div class = "top-image-space">
   <div class = "container">
-    <div class = "row top-subtitle-area">
 
+    <div class = "row top-design-area">
       <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
-      <div class = "sub-title col-md-12 col-sm-12">
-
-        <div class="glitch" data-text="Make">
-          Make
-        </div>
-        <div class="glitch" data-text="Next">
-          Next
-        </div>
-        <div class="glitch" data-text="Craze">
-          Craze
-        </div>
-
+      <div class = "sub-title-wrapper col-md-12 col-sm-12">
+        <ul class = "sub-title">
+          <li class="glitch" data-text="Make">
+            Make
+          </li>
+          <li class="glitch" data-text="a">
+            a
+          </li>
+          <li class="glitch" data-text="Craze">
+            Craze
+          </li>
+        </ul>
       </div>
-
-
     </div>
+
+    <div class = "row top-message-area">
+      <p class = "top-message">
+        いつだって熱狂をつくるのは僕達リスナーだ。
+      </p>
+    </div>
+
+    <div class = "row about-link-area">
+      <%= link_to("#" , class: "about-link") do %>
+        <p class = "link-title">
+          about
+        </p>
+      <% end %>
+    </div>
+
   </div>
 
 </div>
