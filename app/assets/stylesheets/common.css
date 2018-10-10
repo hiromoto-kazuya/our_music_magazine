@@ -3,6 +3,7 @@ body {
   background-color: #fafafa;
   position: relative;
   font-family: "メイリオ";
+  word-break: break-all;
 
 }
 
