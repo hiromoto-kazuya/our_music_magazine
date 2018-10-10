@@ -59,6 +59,19 @@
 }
 
 
+@media screen and (max-width: 992px) {
+  .top-image-space {
+    height: 730px;
+    background-size: contain;
+  }
+
+  .top-message {
+    margin: 30px 0;
+  }
+}
+
+/* コンテンツ部 */
+
 .article-index-contents {
   position:relative;
 }
