@@ -7,7 +7,57 @@
   background-image: url("omm_top.png");
   height: 800px;
   background-size: cover;
+  position: relative;
+  background-attachment: fixed;
 }
+
+.top-image-space .container {
+    height: 100%;
+}
+
+.top-design-area {
+  margin-top: 150px;
+}
+
+.sub-title-wrapper {
+  padding: 50px 100px;
+  border: 3px solid #ffffff;
+}
+
+.sub-title-wrapper li {
+  float: left;
+  margin-right: 20px;
+}
+
+.row.top-message-area {
+  margin-top: 30px;
+}
+
+.top-message {
+  font-size: 20px;
+  letter-spacing: 7px;
+  font-family: sans-serif;
+  color:white;
+  text-align: center;
+  margin: 50px 0;
+}
+
+
+.row.about-link-area {
+  margin-top: 50px;
+  width: 170px;
+  margin: 0 auto;
+}
+
+.link-title {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border: 3px solid #ffffff;
+  padding: 10px;
+}
+
 
 .article-index-contents {
   position:relative;

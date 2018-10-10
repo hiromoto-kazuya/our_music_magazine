@@ -81,7 +81,7 @@ $(function() {
               <%= render '/users/follow_count', user: user %>
             </li>
 
-            <% if user != current_user %>
+            <% if user != current_user && user_signed_in? %>
               <li class = "users-index-follow-btn">
                 <%= render 'users/follow_form', user: user %>
               </li>
