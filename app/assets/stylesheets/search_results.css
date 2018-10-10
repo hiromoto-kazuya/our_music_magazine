@@ -1,3 +1,10 @@
 .searched_users {
   display: none;
 }
+
+.article_btn,.user_btn {
+  height: 40px;
+  font-weight: bold;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
