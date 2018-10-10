@@ -1,0 +1,88 @@
+.about-page-wrapper {
+  margin-bottom: -50px;
+}
+
+.about-page-wrapper .top-image-space {
+  height:500px;
+  background-size: cover;
+}
+
+.about-page-title-wrapper {
+  text-align: center;
+  padding-top: 200px;
+}
+
+.about-title {
+  color: white;
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.about-sub-title {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.description-area {
+  margin: 0;
+  padding-bottom: 30px;
+}
+
+.main-description {
+  height: 200px;
+}
+
+.main-description-title {
+  margin-top: 50px;
+  font-size: 30px;
+  font-family: monospace;
+  font-weight: bold;
+  letter-spacing: 6px;
+  text-align: center;
+}
+
+.main-description-text {
+  font-family: monospace;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.sub-descriptions {
+  margin: 0;
+  padding-left: 0;
+}
+
+.sub-descriptions li {
+  float:left;
+  margin: 0;
+}
+
+.sub-description-1,.sub-description-2,.sub-description-3 {
+  padding: 20px 30px;
+}
+
+.sub-description-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.description-icon {
+  width: 150px;
+  margin: 30px;
+}
+
+.icon-center {
+  text-align: center;
+}
+
+.sub-description-text {
+  max-width: 450px;
+  margin: 0 auto;
+  font-family: monospace;
+  letter-spacing: 3px;
+  line-height: 30px;
+}

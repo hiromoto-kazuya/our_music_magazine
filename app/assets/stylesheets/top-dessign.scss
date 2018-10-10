@@ -21,7 +21,7 @@ body{
 .glitch:after{
   content:attr(data-text);
   position:absolute;
-  left:3px;
+  left:2px;
   text-shadow:-1px 0 red;
   top:0;
   color:white;
@@ -42,7 +42,7 @@ body{
 .glitch:before{
   content:attr(data-text);
   position:absolute;
-  left:-3px;
+  left:-2px;
   text-shadow:1px 0 blue;
   top:0;
   color:white;
