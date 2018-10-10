@@ -1,1 +1,5 @@
-$("#favorite_btn_<%= favorite.article_id %>").html("<%= j(render 'favorites/favorite',{favorite: favorite, article: article})%>");
+var elements = document.querySelectorAll('[data-article_id="<%= article.id %>"]')
+
+elements.forEach(function(element) {
+  element.innerHTML = ("<%= j(render 'favorites/favorite',{favorite: favorite, article: article})%>");
+})

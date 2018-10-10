@@ -6,7 +6,6 @@ class ArticlesController < ApplicationController
   def index
     @new_articles = Article.all.order(created_at: :desc).limit(3)
     @favorite_articles = Article.find(Favorite.group(:article_id).order("count_all desc").count.keys[0..5])
-    truncate_number = 10
     render :layout => 'top'
   end
 
