@@ -1,3 +1,44 @@
+
+
+
+
+<h3>以下の内容で、投稿する。</h3>
+
+<%= form_with(model: @article, url: articles_path, local: true) do |f| %>
+  <%= f.hidden_field :catch_image_cache %>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :hashtag %>
+  <%= f.hidden_field :content %>
+
+  <p><%= image_tag("#{@article.catch_image}") %></p>
+  <p>タイトル:<%= @article.title %></p>
+  <p>ハッシュタグ:<%= @article.hashtag %></p>
+  <p>本文:<%== @article.content %></p>
+  <%= f.submit  '投稿する' %>
+<% end %>
+
+<%= form_with(model: @article, url: new_article_path, local: true, method: 'get') do |f| %>
+  <%= f.hidden_field :catch_image_cache %>
+  <%= f.hidden_field :title %>
+  <%= f.hidden_field :hashtag %>
+  <%= f.hidden_field :content %>
+  <%= f.submit '戻る', name: 'back' %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+================================================
+
+
+
+
 消えかけのテレビのようなデザイン HTML SCSS
 <link href='https://fonts.googleapis.com/css?family=Varela' rel='stylesheet' type='text/css'>
 <div class="glitch" data-text="OMM">OMM</div>
