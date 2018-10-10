@@ -37,7 +37,7 @@
         </div>
 
         <ul class = "article-numbers-info">
-          <div id="favorite_btn_<%= article.id %>">
+          <div id="favorite_btn_<%= article.id %>" data-article_id = "<%= article.id %>">
             <%= render partial: "favorites/favorite", locals: {article: article} %>
           </div>
         </ul>

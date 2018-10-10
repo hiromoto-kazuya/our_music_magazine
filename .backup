@@ -2,6 +2,18 @@
 
 
 
+$("#favorite_btn_<%= favorite.article_id %>").html("<%= j(render 'favorites/favorite',{favorite: favorite, article: article})%>");
+
+
+
+
+----------------------
+
+
+
+
+
+
 <h3>以下の内容で、投稿する。</h3>
 
 <%= form_with(model: @article, url: articles_path, local: true) do |f| %>
