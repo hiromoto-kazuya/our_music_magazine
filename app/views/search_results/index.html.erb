@@ -58,9 +58,9 @@ $(function() {
           </div>
 
           <ul class = "article-numbers-info">
-              <li id="favorite_btn_<%= article.id %>">
-                <%= render partial: "favorites/favorite", locals: {article: article} %>
-              </li>
+            <div id="favorite_btn_<%= article.id %>" data-article_id = "<%= article.id %>">
+              <%= render partial: "favorites/favorite", locals: {article: article} %>
+            </div>
           </ul>
 
         </div>
