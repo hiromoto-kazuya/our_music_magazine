@@ -4,7 +4,7 @@
 
 /* #index */
 .top-image-space {
-  background-image: url("omm_top.png");
+  background-image: url("/assets/omm_top.png");
   height: 800px;
   background-size: cover;
   position: relative;
