@@ -6,6 +6,10 @@ body {
   word-break: break-all;
 }
 
+.notice-area {
+  position: absolute;
+}
+
 .notice {
   color: green;
   text-align: center;
@@ -194,6 +198,10 @@ li.menu__single:hover ul.menu__second-level {
   .header-space {
     height: 130px;
   }
+
+  .notice-area {
+    top: 100px;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -218,6 +226,10 @@ li.menu__single:hover ul.menu__second-level {
 
   .header-space {
     height: 100px;
+  }
+
+  .notice-area {
+    top: 70px;
   }
 }
 
