@@ -4,7 +4,16 @@ body {
   position: relative;
   font-family: "メイリオ";
   word-break: break-all;
+}
 
+.notice {
+  color: green;
+  text-align: center;
+}
+
+.alert {
+  color: red;
+  text-align: center;
 }
 
 h1,h2 {

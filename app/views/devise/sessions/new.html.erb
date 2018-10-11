@@ -4,6 +4,11 @@
   <div class = "user-edit-form col-md-8 col-sm-8 col-xs-8">
 
     <h2>ログイン</h2>
+    <div class = "notice-area">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+    </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 

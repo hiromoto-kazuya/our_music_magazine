@@ -1,4 +1,11 @@
 
 <%= render 'layouts/template_header' %>
-  <%= yield %>
+<div class = "notice-area">
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
+</div>
+
+
+<%= yield %>
 <%= render 'layouts/template_footer' %>
