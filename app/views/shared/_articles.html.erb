@@ -33,7 +33,7 @@
         </div>
 
         <div class = "index-article-contents">
-          <%= article.content.truncate(100).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/,"").gsub(/<img alt=[" a-z=]+.+/, "") %>
+          <%= article.content.truncate(100).gsub(/<("[^"]*"|'[^']*'|[^'">])*>/,"").gsub(/<img alt=[" a-z=]+.+/, "").gsub(/&nbsp;/, "") %>
         </div>
 
         <ul class = "article-numbers-info">
