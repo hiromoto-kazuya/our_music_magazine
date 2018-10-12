@@ -1,10 +1,10 @@
 ja:
   activerecord:
     models:
-      blog: "ブログ"
+      article: "投稿"
       user: "ユーザー"
     attributes:
-      blog:
+      article:
         title: "タイトル"
         content: "内容"
       contact:
