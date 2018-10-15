@@ -71,6 +71,8 @@ class ArticlesController < ApplicationController
   end
 
   def set_article
-    @article = current_user.articles.find(params[:id])
+    unless @article = current_user.articles.find_by(id: params[:id])
+      redirect_to articles_path, notice: "権限がありません"
+    end
   end
 end
