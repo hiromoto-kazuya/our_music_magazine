@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
   def index
     @new_articles = Article.all.order(created_at: :desc).limit(3)
     @favorite_articles = Article.find(Favorite.group(:article_id).order("count_all desc").count.keys[0..5])
-    render :layout => 'top'
+    render layout: 'top'
   end
 
   def new
@@ -18,14 +18,12 @@ class ArticlesController < ApplicationController
   end
 
   def confirm
-    @article = Article.new(article_params)
-    @article.user_id = current_user.id
+    @article = current_user.articles.build(article_params)
     render :new if @article.invalid?
   end
 
   def create
-    @article = Article.new(article_params)
-    @article.user_id = current_user.id
+    @article = current_user.articles.build(article_params)
     if @article.save
       redirect_to articles_path, notice: "記事を投稿しました"
     else
