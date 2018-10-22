@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def about
-    render :layout => 'top'
+    render layout: 'top'
   end
 end
