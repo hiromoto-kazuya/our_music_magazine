@@ -34,9 +34,9 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     impressionist(@article, nil, unique: [:session_hash])
-    if user_signed_in?
-      @favorite = current_user.favorites.find_by(article_id: @article.id)
-    end
+
+    @favorite = current_user.favorites.find_by(article_id: @article.id) if user_signed_in?
+
     @comments = @article.comments
     @comment = @article.comments.build
   end
