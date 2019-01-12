@@ -11,18 +11,12 @@ class RelationshipsController < ApplicationController
   end
 
   def create
-    if user_signed_in?
-      @user = User.find(params[:relationship][:followed_id])
-      current_user.follow!(@user)
-      @user
-    else
-      @user
-    end
+    @user = User.find(params[:relationship][:followed_id])
+    current_user.follow!(@user)
   end
 
   def destroy
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow!(@user)
-    @user
   end
 end
