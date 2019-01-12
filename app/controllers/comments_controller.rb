@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
+
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @comment.user = current_user
     if @comment.save
       render :index
     end
@@ -16,6 +17,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:article_id,:user_id, :content)
   end
