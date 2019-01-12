@@ -12,21 +12,19 @@ class Article < ApplicationRecord
   is_impressionable counter_cache: true
 
   after_create do
-    article = Article.find_by(id: self.id)
-    hashtag_text  = self.hashtag.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    hashtag_text.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
-      article.hashtags << tag
-    end
+    associate_hashtag_with_article
   end
 
   before_update do
-    article = Article.find_by(id: self.id)
-    article.hashtags.clear
-    hashtag_text = self.hashtag.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-    hashtag_text.uniq.map do |hashtag|
+    self.hashtags.clear
+    associate_hashtag_with_article
+  end
+
+  def associate_hashtag_with_article
+    hashtag_texts  = self.hashtag.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    hashtag_texts.uniq.map do |hashtag|
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
-      article.hashtags << tag
+      self.hashtags << tag
     end
   end
 end
