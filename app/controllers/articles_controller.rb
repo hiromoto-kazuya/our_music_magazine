@@ -59,7 +59,6 @@ class ArticlesController < ApplicationController
   end
 
   def hashtag
-    @user = current_user
     @tag = Hashtag.find_by(hashname: params[:name])
     @articles = @tag.articles.order(created_at: :desc)
   end
