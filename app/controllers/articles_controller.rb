@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :confirm, :create, :edit, :update, :destroy]
-  before_action :set_article, only:[:edit,:update,:destroy,]
   before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
   def index
@@ -32,19 +31,19 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = find_article
     impressionist(@article, nil, unique: [:session_hash])
-
     @favorite = current_user.favorites.find_by(article_id: @article.id) if user_signed_in?
-
     @comments = @article.comments
     @comment = @article.comments.build
   end
 
   def edit
+    @article = find_article
   end
 
   def update
+    @article = find_article
     if @article.update(article_params)
       redirect_to article_path, notice: "記事を編集しました"
     else
@@ -53,6 +52,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = find_article
     @article.destroy
     redirect_to articles_path, notice: "記事を削除しました"
   end
@@ -64,13 +64,13 @@ class ArticlesController < ApplicationController
   end
 
   private
+
   def article_params
     params.require(:article).permit(:title,:hashtag, :content, :genre_id, :catch_image, :catch_image_cache)
   end
 
-  def set_article
-    unless @article = current_user.articles.find_by(id: params[:id])
-      redirect_to articles_path, notice: "権限がありません"
-    end
+  def find_article
+    Article.find(params[:id])
   end
+
 end
