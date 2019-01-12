@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :confirm, :create, :edit, :update, :destroy]
+  before_action :authenticate_article_owner, only:[:edit,:update,:destroy]
   before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
   def index
@@ -71,6 +72,14 @@ class ArticlesController < ApplicationController
 
   def find_article
     Article.find(params[:id])
+  end
+
+  def article_owner?
+    current_user.articles.find_by(id: params[:id]) ? true : false
+  end
+
+  def authenticate_article_owner
+    redirect_to articles_path, notice: "権限がありません" unless article_owner?
   end
 
 end
