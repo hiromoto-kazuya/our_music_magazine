@@ -1,13 +1,9 @@
 <% if user_signed_in? %>
-  <% @favorite = current_user.favorites.find_by(article_id: article.id) %>
-  <% if @favorite.present? %>
+  <% if current_user_favorite = article.favorites.find_by(user: current_user) %>
     <li>
-      <%= link_to favorite_path(id: @favorite.id), method: :delete, remote: true do %>
+      <%= link_to favorite_path(id: current_user_favorite), method: :delete, remote: true do %>
         <%= image_tag "color-heart.png", class: "favorite-heart unfavorite-btn" %>
       <% end %>
-    </li>
-    <li class = "like-count">
-      いいね！<%= link_to article.favorites.count, favorite_users_article_path(article) %>件
     </li>
   <% else %>
     <li>
@@ -15,11 +11,11 @@
         <%= image_tag "non-color-heart.png", class: "favorite-heart favorite-btn" %>
       <% end %>
     </li>
-    <li class = "like-count">
-      いいね！<%= link_to article.favorites.count, favorite_users_article_path(article) %>件
-    </li>
   <% end %>
 <% end %>
+<li class = "like-count">
+  いいね！<%= link_to article.favorites.count, favorite_users_article_path(article) %>件
+</li>
 
 <li class = "pv-count">
   <%= article.impressionist_count %>PV
