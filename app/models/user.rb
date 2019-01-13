@@ -17,6 +17,19 @@ class User < ApplicationRecord
 
   mount_uploader :icon_image, ImageUploader
 
+  scope :like_search, -> (search_string) {
+    like_search_name(search_string)
+    .or(like_search_introduce_message(search_string))
+  }
+
+  scope :like_search_name, -> (search_string) {
+    where('name LIKE ?', "%#{search_string}%")
+  }
+
+  scope :like_search_introduce_message, -> (search_string) {
+    where('introduce_message LIKE ?', "%#{search_string}%")
+  }
+
   def follow!(other_user)
     active_relationships.create!(followed_id: other_user.id)
   end
