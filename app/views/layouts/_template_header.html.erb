@@ -16,11 +16,9 @@
         <% end %>
       </div>
 
-      <% unless @q == nil %>
-        <%= search_form_for @q, url: search_results_path, html: { method: :get } do |f| %>
-          <%= f.text_field :title_or_content_or_hashtag_cont, class: "form-control search-form",placeholder: "アーティスト名や曲名で検索" %>
-          <div><%= f.submit '検索する' ,class: "search-form-btn"%></div>
-        <% end %>
+      <%= form_with(url: search_results_path, local:true, method: :get) do |form| %>
+        <%= form.text_field :search, class: 'form-control search-form', placeholder: 'アーティスト名や曲名で検索' %>
+        <div><%= form.submit '検索する' ,class: "search-form-btn"%></div>
       <% end %>
 
       <ul class = "menu">
