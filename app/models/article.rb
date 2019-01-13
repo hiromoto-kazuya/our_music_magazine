@@ -11,6 +11,24 @@ class Article < ApplicationRecord
   mount_uploader :catch_image, ImageUploader
   is_impressionable counter_cache: true
 
+  scope :like_search, -> (search_string) {
+    like_search_title(search_string)
+    .or(like_search_content(search_string))
+    .or(like_search_hashtag(search_string))
+  }
+
+  scope :like_search_title, -> (search_string) {
+    where('title LIKE ?', "%#{search_string}%")
+  }
+
+  scope :like_search_content, -> (search_string) {
+    where('content LIKE ?', "%#{search_string}%")
+  }
+
+  scope :like_search_hashtag, -> (search_string) {
+    where('hashtag LIKE ?', "%#{search_string}%")
+  }
+
   after_create do
     associate_hashtag_with_article
   end

@@ -17,7 +17,7 @@
       </div>
 
       <%= form_with(url: search_results_path, local:true, method: :get) do |form| %>
-        <%= form.text_field :search, class: 'form-control search-form', placeholder: 'アーティスト名や曲名で検索' %>
+        <%= form.text_field :search_string, class: 'form-control search-form', placeholder: 'アーティスト名や曲名で検索' %>
         <div><%= form.submit '検索する' ,class: "search-form-btn"%></div>
       <% end %>
 

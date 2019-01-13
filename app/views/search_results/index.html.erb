@@ -24,8 +24,9 @@ $(function() {
 
 </br>
 <table>
-  <% @articles.each do |article| %>
-    <% if article.is_a?(Article) %>
+  <% @search_results.each do |search_result| %>
+    <% if search_result.is_a?(Article) %>
+      <% article = search_result %>
       <div class = "searched_articles article col-md-4 col-sm-6 col-xs-6">
         <%= link_to(article_path(article.id)) do %>
           <div class = "catch_image">
@@ -33,19 +34,11 @@ $(function() {
           </div>
         <% end %>
         <div class = "text-information">
-
-          <p class = "created_day">
-            <%= article.created_at.to_date %>
-          </p>
-
-          <p class = "hashtag">
-            <%= render_with_hashtags(article.hashtag) %>
-          </p>
+          <p class = "created_day"><%= article.created_at.to_date %></p>
+          <p class = "hashtag"><%= render_with_hashtags(article.hashtag) %></p>
 
           <%= link_to(article_path(article.id)) do %>
-            <p class = "article-title">
-              <%= article.title.truncate(30) %>
-            </p>
+            <p class = "article-title"><%= article.title.truncate(30) %></p>
           <% end %>
 
           <div class = "user-info">
@@ -62,12 +55,10 @@ $(function() {
               <%= render partial: "favorites/favorite", locals: {article: article} %>
             </div>
           </ul>
-
         </div>
       </div>
     <% else %>
-      <% user = article %>
-
+      <% user = search_result %>
       <div class = "searched_users users-index">
         <div class = "user col-md-6 col-sm-12 col-xs-12">
           <%= link_to(user_path(user)) do %>
@@ -77,14 +68,10 @@ $(function() {
           <%= link_to user.name ,user_path(user), { class: "user-name-link"} %>
 
           <ul class = "users-index-follow-set">
-            <li class = "users-index-follow-number">
-              <%= render '/users/follow_count', user: user %>
-            </li>
+            <li class = "users-index-follow-number"><%= render '/users/follow_count', user: user %></li>
 
             <% if user != current_user && user_signed_in? %>
-              <li class = "users-index-follow-btn">
-                <%= render 'users/follow_form', user: user %>
-              </li>
+              <li class = "users-index-follow-btn"><%= render 'users/follow_form', user: user %></li>
             <% end %>
           </ul>
 
@@ -95,11 +82,8 @@ $(function() {
               <%= user.introduce_message %>
             <% end %>
           </div>
-
         </div>
-
       </div>
-
     <% end %>
   <% end %>
 </table>

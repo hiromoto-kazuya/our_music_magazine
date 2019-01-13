@@ -1,7 +1,10 @@
 class SearchResultsController < ApplicationController
   impressionist :actions=> [:index]
-  
+
   def index
+    @articles = Article.includes(:user).like_search(params['search_string'])
+    @users = User.like_search(params['search_string'])
+    @search_results = (@articles + @users)
   end
 
   def new_articles
