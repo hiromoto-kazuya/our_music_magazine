@@ -1,7 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :confirm, :create, :edit, :update, :destroy]
   before_action :authenticate_article_owner, only:[:edit,:update,:destroy]
-  before_action :set_params_for_searching_articles_and_users, only: [:index, :new, :confirm, :edit, :show, :hashtag]
 
   def index
     @new_articles = Article.all.order(created_at: :desc).limit(3)
